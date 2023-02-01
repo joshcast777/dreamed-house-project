@@ -6,6 +6,9 @@ import "primeicons/primeicons.css"; //icons
 // Global Styles
 import "./styles/styles.scss";
 
+// Routes
+import AppRoutes from "./routes/AppRoutes";
+
 export default function DreamedHouse() {
-	return <h1>Hello World!!</h1>;
+	return <AppRoutes />;
 }

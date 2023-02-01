@@ -2,3 +2,23 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer components {
+	.responsive-container {
+		@apply container mx-auto px-3;
+	}
+}
+
+@layer utilities {
+	.width-transition {
+		transition: width 0.2s, max-width 0.2s;
+	}
+
+	.heigh-transition {
+		transition: height 0.2s, max-height 0.2s;
+	}
+}
+
+:root {
+	--primary-color: #f59e0b;
+}
