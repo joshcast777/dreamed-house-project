@@ -1,3 +1,4 @@
-import HomePage from "./HomePage";
+import Home from "./Home.page";
+import HouseDetail from "./HouseDetail.page";
 
-export { HomePage };
+export { Home, HouseDetail };

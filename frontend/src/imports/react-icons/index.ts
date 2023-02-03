@@ -1,4 +1,5 @@
+import { AiOutlineEye, AiOutlineLogin } from "react-icons/ai";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
-import { AiOutlineLogin } from "react-icons/ai";
+import { FaBed, FaBuilding, FaHome, FaToilet } from "react-icons/fa";
 
-export { AiOutlineLogin, BsFacebook, BsInstagram, BsTwitter };
+export { AiOutlineEye, AiOutlineLogin, BsFacebook, BsInstagram, BsTwitter, FaBed, FaBuilding, FaHome, FaToilet };
