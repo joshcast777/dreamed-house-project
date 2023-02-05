@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DreamedHouse.data;
@@ -107,7 +102,7 @@ namespace DreamedHouse.Controllers
 
 		private bool HouseExists(int id)
 		{
-			return (_context.Houses?.Any(house => house.HouseId == id)).GetValueOrDefault();
+			return (_context.Houses?.Any(e => e.HouseId == id)).GetValueOrDefault();
 		}
 	}
 }

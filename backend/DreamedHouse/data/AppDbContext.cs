@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using DreamedHouse.models;
+﻿using DreamedHouse.models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamedHouse.data;
 
 public partial class AppDbContext : DbContext
 {
-	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
 	public virtual DbSet<House> Houses { get; set; }
 
 	public virtual DbSet<HouseImage> HouseImages { get; set; }
+
+	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -21,8 +19,8 @@ public partial class AppDbContext : DbContext
 
 		modelBuilder.Entity<House>(entity =>
 		{
-			entity.HasKey(house => house.HouseId)
-				.HasName("PRIMARY");
+			entity.HasKey(e => e.HouseId)
+                .HasName("PRIMARY");
 
 			entity.ToTable("houses");
 
@@ -97,9 +95,8 @@ public partial class AppDbContext : DbContext
 				.HasColumnName("updated_at");
 
 			entity.HasOne(houseImage => houseImage.House)
-				.WithMany(house => house.HouseImages)
+                .WithMany(house => house.HouseImages)
 				.HasForeignKey(houseImage => houseImage.HouseId)
-				.OnDelete(DeleteBehavior.ClientSetNull)
 				.HasConstraintName("fk_house_images_houses");
 		});
 
