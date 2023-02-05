@@ -1,18 +1,18 @@
 // Shared Components
-import { HeaderTitle, Title } from ".";
+import { HeaderTitleComponent, TitleComponent } from ".";
 
 // Own Interfaces
-interface Titles {
+interface ITitles {
 	headerTitle: string;
 	title: string;
 }
 
-export default function TopPage({ headerTitle = "Header Title", title = "Title" }: Titles): JSX.Element {
+export default function TopPage({ headerTitle = "Header Title", title = "Title" }: ITitles): JSX.Element {
 	return (
 		<>
-			<HeaderTitle title={headerTitle} />
+			<HeaderTitleComponent title={headerTitle} />
 
-			<Title title={title} />
+			<TitleComponent title={title} />
 		</>
 	);
 }

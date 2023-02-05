@@ -1,4 +1,3 @@
-import cloudinaryInstance from "./cloudinaryInstance.helper";
-import cloudinaryURL from "./cloudinaryURL.helper";
+import cloudinaryUrl from "./cloudinaryUrl.helper";
 
-export { cloudinaryInstance, cloudinaryURL };
+export { cloudinaryUrl as cloudinaryUrlHelper };

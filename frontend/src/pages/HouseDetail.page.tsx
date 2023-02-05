@@ -1,9 +1,9 @@
-import { TopPage } from "../components/shared";
+import { TopPageComponent } from "../components/shared";
 
 export default function HouseDetail() {
 	return (
 		<>
-			<TopPage headerTitle="Detalle de la casa" title="Lista de casas" />
+			<TopPageComponent headerTitle="Detalle de la casa" title="Lista de casas" />
 		</>
 	);
 }

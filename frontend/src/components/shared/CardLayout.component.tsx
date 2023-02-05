@@ -1,22 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { CardHouse } from ".";
-import { House } from "../../interfaces/app.interfaces";
-import { houseService } from "../../services";
+// Shared Components
+import { CardHouseComponent } from ".";
+
+// Store
+import { useAppSelector } from "../../store";
+
+// Interfaces
+import { IHouse } from "../../interfaces";
 
 export default function CardLayout(): JSX.Element {
-	const [houses, setHouses] = useState<House[]>([]);
-
-	useEffect(() => {
-		houseService.getHouses().then((houses: House[]) => setHouses(houses));
-	}, []);
-
-	if (houses.length === 0) return <div>Loading...</div>;
+	const { houses } = useAppSelector(state => state.houses);
 
 	return (
 		<div className="card-layout">
-			{houses.map((house: House) => (
-					<CardHouse house={house} />
+			{houses.map((house: IHouse) => (
+				<CardHouseComponent key={house.houseId} house={house} />
 			))}
 		</div>
 	);

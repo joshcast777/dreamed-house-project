@@ -10,6 +10,8 @@
 
 	.card {
 		flex-basis: 100%;
+
+		@apply bg-gray-100 hover:shadow-lg;
 	}
 
 	.card-layout {
@@ -36,12 +38,20 @@
 }
 
 @layer utilities {
+	.background-color-transition {
+		transition: background-color 0.2s;
+	}
+
 	.font-transition {
 		transition: font-size 0.2s, line-height 0.2s;
 	}
 
 	.height-transition {
 		transition: height 0.2s, max-height 0.2s;
+	}
+
+	.shadow-transition {
+		transition: box-shadow 0.2s;
 	}
 
 	.width-transition {

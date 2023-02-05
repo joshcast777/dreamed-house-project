@@ -1,7 +1,7 @@
 // Interfaces
-import { TitleData } from "../../interfaces/app.interfaces";
+import { ITitle } from "../../interfaces";
 
-export default function Title({ title = "Title" }: TitleData): JSX.Element {
+export default function Title({ title = "Title" }: ITitle): JSX.Element {
 	return (
 		<div className="bg-background-dark h-16 py-3 flex items-center mb-10 lg:h-20">
 			<h2 className="responsive-container width-transition text-primary-color font-bold text-3xl lg:text-4xl">

@@ -1,16 +1,19 @@
-import { HouseFeature } from ".";
-import { FeaturesData } from "../../interfaces/app.interfaces";
+// Shared Components
+import { HouseFeatureComponent } from ".";
+
+// Interfaces
+import { IHouseFeatures } from "../../interfaces";
 
 // Own Interfaces
-interface HouseFeatures {
-	houseFeatures: FeaturesData[];
+interface IHouseFeaturesData {
+	houseFeatures: IHouseFeatures[];
 }
 
-export default function FeaturesLayout({ houseFeatures }: HouseFeatures) {
+export default function FeaturesLayout({ houseFeatures }: IHouseFeaturesData): JSX.Element {
 	return (
 		<div className="grid grid-cols-1 gap-3 sm:grid-cols-2 2xs:grid-cols-2">
-			{houseFeatures.map((houseFeature: FeaturesData) => (
-				<HouseFeature icon={houseFeature.icon} feature={houseFeature.feature} />
+			{houseFeatures.map((houseFeature: IHouseFeatures) => (
+				<HouseFeatureComponent key={houseFeature.key} icon={houseFeature.icon} feature={houseFeature.feature} />
 			))}
 		</div>
 	);

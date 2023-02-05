@@ -1,3 +1,3 @@
-export default function cloudinaryURL(imageName: string): string {
+export default function cloudinaryUrl(imageName: string): string {
 	return `${import.meta.env.VITE_CLOUDINARY_PATH}/${imageName}`;
 }

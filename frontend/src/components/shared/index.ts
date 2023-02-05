@@ -10,4 +10,4 @@ import SocialLinks from "./SocialLinks.component";
 import Title from "./Title.component";
 import TopPage from "./TopPage.component";
 
-export { CardHouse, CardLayout, Footer, HeaderTitle, HouseFeature, FeaturesLayout, LogoLink, MenuBar, SocialLinks, Title, TopPage };
+export { CardHouse as CardHouseComponent, CardLayout as CardLayoutComponent, Footer as FooterComponent, HeaderTitle as HeaderTitleComponent, HouseFeature as HouseFeatureComponent, FeaturesLayout as FeaturesLayoutComponent, LogoLink as LogoLinkComponent, MenuBar as MenuBarComponent, SocialLinks as SocialLinksComponent, Title as TitleComponent, TopPage as TopPageComponent };

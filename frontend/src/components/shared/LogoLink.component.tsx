@@ -2,17 +2,15 @@
 import { Link } from "react-router-dom";
 
 // Cloudinary
-import { cloudinaryURL } from "../../helpers";
+import { cloudinaryUrlHelper } from "../../helpers";
 
-// Own Interfaces
-interface Logo {
-	className: string;
-}
+// Interfaces
+import { IClassName } from "../../interfaces";
 
-export default function LogoLink({ className }: Logo): JSX.Element {
+export default function LogoLink({ className }: IClassName): JSX.Element {
 	return (
 		<Link to="/">
-			<img src={cloudinaryURL("logo_yx6nb0.png")} alt="logo" className={className} />
+			<img src={cloudinaryUrlHelper("logo_yx6nb0.png")} alt="logo" className={className} />
 		</Link>
 	);
 }
