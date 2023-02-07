@@ -12,11 +12,11 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { getHouses } from "../store/slices/houses";
 
 export default function Home(): JSX.Element {
-	const { isLoading } = useAppSelector(state => state.houses);
+	const { houses, isLoading } = useAppSelector(state => state.houses);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispatch(getHouses());
+		if (houses.length === 0) dispatch(getHouses());
 	}, []);
 
 	if (isLoading)
@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
 
 	return (
 		<>
-			<TopPageComponent headerTitle="Inicio" title="Lista de casas" />
+			<TopPageComponent heroImage={{ text: "Inicio", imageSrc: "header-page-image_vrhxoi" }} title={{ title: "Lista de casas" }} />
 
 			<CardLayoutComponent />
 		</>

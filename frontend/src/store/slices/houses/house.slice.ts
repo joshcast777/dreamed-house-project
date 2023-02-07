@@ -2,32 +2,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+// Thunks
+import { getHouse, getHouses } from ".";
+
 // Interfaces
 import { IHouse } from "../../../interfaces";
 
-// Thunks
-import { getHouses } from ".";
-
+// Own Interfaces
 interface HouseState {
 	houses: IHouse[];
-	houseSelected: IHouse;
+	selectedHouse?: IHouse;
 	isLoading: boolean;
 }
 
 const initialState: HouseState = {
 	houses: [],
-	houseSelected: {
-		bathroomsNumber: 0,
-		createdAt: "",
-		floorsNumber: 0,
-		houseId: 0,
-		houseImages: [],
-		name: "",
-		price: 0,
-		roomsNumber: 0,
-		squareMeters: 0,
-		updatedAt: ""
-	},
+	selectedHouse: undefined,
 	isLoading: true
 };
 
@@ -35,23 +25,37 @@ export const house = createSlice({
 	name: "house",
 	initialState,
 	reducers: {
+		removeSelectedHouse: state => {
+			state.selectedHouse = undefined;
+		},
 		setHouses: (state, action: PayloadAction<IHouse[]>) => {
 			state.isLoading = false;
 			state.houses = action.payload;
 		},
-		setSelectedHouse: (state, action: PayloadAction<IHouse>) => {
-			state.houseSelected = action.payload;
+		setSelectedHouse: (state, action: PayloadAction<string>) => {
+			state.isLoading = false;
+			state.selectedHouse = state.houses.find((house: IHouse) => house.houseId === parseInt(action.payload));
 		},
 		startLoadingHouses: state => {
 			state.isLoading = true;
 		}
 	},
 	extraReducers: builder => {
+		builder.addCase(getHouses.pending, state => {
+			state.isLoading = true;
+		});
 		builder.addCase(getHouses.fulfilled, (state, action) => {
 			state.isLoading = false;
 			state.houses = action.payload;
 		});
+		builder.addCase(getHouse.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(getHouse.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.selectedHouse = action.payload;
+		});
 	}
 });
 
-export const { setHouses, setSelectedHouse, startLoadingHouses } = house.actions;
+export const { removeSelectedHouse, setHouses, setSelectedHouse, startLoadingHouses } = house.actions;

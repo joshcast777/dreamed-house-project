@@ -17,11 +17,11 @@ import { cloudinaryUrlHelper } from "../../helpers";
 import { IHouseFeatures, IHouse } from "../../interfaces";
 
 // Own Interfaces
-interface IHouseData {
+interface CardHouseProps {
 	house: IHouse;
 }
 
-export default function CardHouse({ house }: IHouseData): JSX.Element {
+export default function CardHouse({ house }: CardHouseProps): JSX.Element {
 	const featuresData: IHouseFeatures[] = [
 		{
 			key: "squareMeters",
@@ -60,14 +60,14 @@ export default function CardHouse({ house }: IHouseData): JSX.Element {
 	const header = <img src={cloudinaryUrlHelper(house.houseImages[0].imageUrl)} alt="Card" className="h-60 object-cover rounded-t-md" />;
 
 	const footer = (
-		<Link to={`house-detail/${house.houseId}`} className="block max-w-max ml-auto">
+		<Link to={`house-detail/${house.houseId}`} className="card-footer-link">
 			<PrimeButton label="Más información" icon={<AiOutlineEyeIcon className="mr-2 text-xl" />} className="p-button-warning p-button-sm background-color-transition" />
 		</Link>
 	);
 
 	return (
 		<PrimeCard title={house.name} subTitle={`Última actualización: ${new Date(house.updatedAt).toLocaleDateString("en-GB")}`} footer={footer} header={header} className="card shadow-transition">
-			<FeaturesLayoutComponent houseFeatures={featuresData} />
+			<FeaturesLayoutComponent houseFeatures={featuresData} className="grid-cols-1" />
 		</PrimeCard>
 	);
 }

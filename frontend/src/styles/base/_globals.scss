@@ -7,34 +7,6 @@
 	.responsive-container {
 		@apply container mx-auto px-3;
 	}
-
-	.card {
-		flex-basis: 100%;
-
-		@apply bg-gray-100 hover:shadow-lg;
-	}
-
-	.card-layout {
-		@apply grid grid-cols-1 gap-5 responsive-container width-transition sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
-	}
-
-	@media (min-width: 640px) {
-		.card {
-			flex-basis: calc(50% - 10px);
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.card {
-			flex-basis: calc((100% / 3) - 13.4px);
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.card {
-			flex-basis: calc(25% - 15px);
-		}
-	}
 }
 
 @layer utilities {

@@ -1,6 +1,6 @@
 export interface House {
 	bathroomsNumber: number;
-	createdAt: Date;
+	createdAt: string;
 	floorsNumber: number;
 	houseId: number;
 	houseImages: HouseImage[];
@@ -8,13 +8,22 @@ export interface House {
 	price: number;
 	roomsNumber: number;
 	squareMeters: number;
-	updatedAt: Date;
+	updatedAt: string;
 }
 
 export interface HouseFeatures {
 	key: string;
 	feature: JSX.Element;
 	icon: JSX.Element;
+}
+
+export interface HouseFinish {
+	houseFinisheId: number;
+	name: string;
+	price: number;
+	typeFinish: string;
+	createdAt: string;
+	updatedAt: string;
 }
 
 export interface HouseImage {

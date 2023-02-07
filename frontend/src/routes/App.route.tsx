@@ -17,6 +17,7 @@ export default function AppRoutes(): JSX.Element {
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 						<Route path="/house-detail/:houseId" element={<HouseDetailPage />} />
+
 						<Route path="*" element={<Navigate to="/" />} />
 					</Routes>
 				</div>

@@ -1,4 +1,4 @@
-import { setHouses, setSelectedHouse, startLoadingHouses } from "./house.slice";
-import { getHouses } from "./thunks";
+import { house, removeSelectedHouse, setHouses, setSelectedHouse, startLoadingHouses } from "./house.slice";
+import { getHouse, getHouses } from "./house.thunk";
 
-export { getHouses, setHouses, setSelectedHouse as setHouseSelected, startLoadingHouses };
+export { getHouse, getHouses, house, removeSelectedHouse, setHouses, setSelectedHouse, startLoadingHouses };

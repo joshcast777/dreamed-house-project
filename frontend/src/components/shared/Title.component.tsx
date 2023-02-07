@@ -1,12 +1,10 @@
 // Interfaces
 import { ITitle } from "../../interfaces";
 
-export default function Title({ title = "Title" }: ITitle): JSX.Element {
+export default function Title({ title = "Title" }: ITitle) {
 	return (
-		<div className="bg-background-dark h-16 py-3 flex items-center mb-10 lg:h-20">
-			<h2 className="responsive-container width-transition text-primary-color font-bold text-3xl lg:text-4xl">
-				<span className="font-transition">{title}</span>
-			</h2>
-		</div>
+		<h3 className="text-primary-color text-xl text-center font-bold mb-5 sm:text-2xl lg:text-3xl">
+			<span className="font-transition">{title}</span>
+		</h3>
 	);
 }

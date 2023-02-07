@@ -1,18 +1,21 @@
 // Shared Components
-import { HeaderTitleComponent, TitleComponent } from ".";
+import { HeroImageComponent, PageTitleComponent } from ".";
+
+// Interfaces
+import { IHeroImage, ITitle } from "../../interfaces";
 
 // Own Interfaces
-interface ITitles {
-	headerTitle: string;
-	title: string;
+interface TopPageProps {
+	heroImage: IHeroImage;
+	title: ITitle;
 }
 
-export default function TopPage({ headerTitle = "Header Title", title = "Title" }: ITitles): JSX.Element {
+export default function TopPage({ heroImage, title }: TopPageProps): JSX.Element {
 	return (
 		<>
-			<HeaderTitleComponent title={headerTitle} />
+			<HeroImageComponent text={heroImage.text} imageSrc={heroImage.imageSrc} />
 
-			<TitleComponent title={title} />
+			<PageTitleComponent title={title.title} />
 		</>
 	);
 }
