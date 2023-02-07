@@ -1,11 +1,13 @@
-﻿using DreamedHouse.models;
+﻿using DreamedHouse.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DreamedHouse.data;
+namespace DreamedHouse.Data;
 
 public partial class AppDbContext : DbContext
 {
 	public virtual DbSet<House> Houses { get; set; }
+
+	public virtual DbSet<HouseFinish> HouseFinishes { get; set; }
 
 	public virtual DbSet<HouseImage> HouseImages { get; set; }
 
@@ -19,8 +21,8 @@ public partial class AppDbContext : DbContext
 
 		modelBuilder.Entity<House>(entity =>
 		{
-			entity.HasKey(e => e.HouseId)
-                .HasName("PRIMARY");
+			entity.HasKey(house => house.HouseId)
+				.HasName("PRIMARY");
 
 			entity.ToTable("houses");
 
@@ -63,6 +65,40 @@ public partial class AppDbContext : DbContext
 				.HasColumnName("updated_at");
 		});
 
+		modelBuilder.Entity<HouseFinish>(entity =>
+		{
+			entity.HasKey(houseFinishes => houseFinishes.HouseFinisheId)
+				.HasName("PRIMARY");
+
+			entity.ToTable("house_finishes");
+
+			entity.Property(houseFinishes => houseFinishes.HouseFinisheId)
+				.HasColumnType("int(11)")
+				.HasColumnName("house_finishe_id");
+
+			entity.Property(houseFinishes => houseFinishes.CreatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("created_at");
+
+			entity.Property(houseFinishes => houseFinishes.Name)
+				.HasMaxLength(100)
+				.HasColumnName("name");
+
+			entity.Property(houseFinishes => houseFinishes.Price)
+				.HasColumnType("double(10,2)")
+				.HasColumnName("price");
+
+			entity.Property(houseFinishes => houseFinishes.TypeFinish)
+				.HasMaxLength(30)
+				.HasColumnName("type_finish");
+
+			entity.Property(houseFinishes => houseFinishes.UpdatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("updated_at");
+		});
+
 		modelBuilder.Entity<HouseImage>(entity =>
 		{
 			entity.HasKey(houseImage => houseImage.ImageId)
@@ -95,7 +131,7 @@ public partial class AppDbContext : DbContext
 				.HasColumnName("updated_at");
 
 			entity.HasOne(houseImage => houseImage.House)
-                .WithMany(house => house.HouseImages)
+				.WithMany(house => house.HouseImages)
 				.HasForeignKey(houseImage => houseImage.HouseId)
 				.HasConstraintName("fk_house_images_houses");
 		});

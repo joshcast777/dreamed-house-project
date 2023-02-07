@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DreamedHouse.data;
-using DreamedHouse.models;
+using DreamedHouse.Data;
+using DreamedHouse.Models;
 
 namespace DreamedHouse.Controllers
 {
@@ -43,13 +43,15 @@ namespace DreamedHouse.Controllers
 		}
 
 		// GET: api/House/5
-		[HttpGet("{id}")]
-		public async Task<ActionResult<House>> GetHouse(int id)
+		[HttpGet("{houseId}")]
+		public async Task<ActionResult<House>> GetHouse(int houseId)
 		{
 			if (_context.Houses == null)
 				return NotFound();
 
-			var house = await _context.Houses.FindAsync(id);
+			var house = await _context.Houses
+				.Include(house => house.HouseImages)
+				.FirstOrDefaultAsync(house => house.HouseId == houseId);
 
 			if (house == null)
 				return NotFound();
@@ -100,9 +102,9 @@ namespace DreamedHouse.Controllers
 			return NoContent();
 		}
 
-		private bool HouseExists(int id)
+		private bool HouseExists(int houseId)
 		{
-			return (_context.Houses?.Any(e => e.HouseId == id)).GetValueOrDefault();
+			return (_context.Houses?.Any(house => house.HouseId == houseId)).GetValueOrDefault();
 		}
 	}
 }

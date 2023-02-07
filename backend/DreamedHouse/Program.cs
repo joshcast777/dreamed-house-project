@@ -1,4 +1,4 @@
-using DreamedHouse.data;
+using DreamedHouse.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +29,8 @@ app.UseHttpsRedirection();
 
 app.UseCors(x => x.AllowAnyOrigin()
 	.AllowAnyMethod()
-	.AllowAnyHeader());
+	.AllowAnyHeader()
+);
 
 app.UseAuthorization();
 

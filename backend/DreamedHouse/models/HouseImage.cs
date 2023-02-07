@@ -1,4 +1,4 @@
-﻿namespace DreamedHouse.models;
+﻿namespace DreamedHouse.Models;
 
 public partial class HouseImage
 {
