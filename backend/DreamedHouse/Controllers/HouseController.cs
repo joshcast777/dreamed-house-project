@@ -22,7 +22,7 @@ namespace DreamedHouse.Controllers
 		public async Task<ActionResult<House>> PostHouse(House house)
 		{
 			if (_context.Houses == null)
-				return Problem("Entity set 'AppDbContext.Houses'  is null.");
+				return Problem("Entity set 'AppDbContext.Houses' is null.");
 
 			_context.Houses.Add(house);
 			await _context.SaveChangesAsync();
@@ -49,12 +49,12 @@ namespace DreamedHouse.Controllers
 			if (_context.Houses == null)
 				return NotFound();
 
-			var house = await _context.Houses
+			House? house = await _context.Houses
 				.Include(house => house.HouseImages)
 				.FirstOrDefaultAsync(house => house.HouseId == houseId);
 
 			if (house == null)
-				return NotFound();
+				return NotFound("House not found");
 
 			return house;
 		}
@@ -91,7 +91,7 @@ namespace DreamedHouse.Controllers
 			if (_context.Houses == null)
 				return NotFound();
 
-			var house = await _context.Houses.FindAsync(id);
+			House? house = await _context.Houses.FindAsync(id);
 
 			if (house == null)
 				return NotFound();

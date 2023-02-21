@@ -282,3 +282,4 @@ D:\Documents\projects\casa-soñada\backend\DreamedHouse\obj\Debug\net7.0\ref\Dre
 D:\Documents\projects\casa-soñada\backend\DreamedHouse\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\Documents\projects\casa-soñada\backend\DreamedHouse\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Documents\projects\casa-soñada\backend\DreamedHouse\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+D:\Documents\projects\casa-soñada\backend\DreamedHouse\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

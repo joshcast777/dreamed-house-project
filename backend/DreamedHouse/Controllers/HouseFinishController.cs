@@ -22,7 +22,7 @@ namespace DreamedHouse.Controllers
 		public async Task<ActionResult<HouseFinish>> PostHouseFinish(HouseFinish houseFinish)
 		{
 			if (_context.HouseFinishes == null)
-				return Problem("Entity set 'AppDbContext.HouseFinishes'  is null.");
+				return Problem("Entity set 'AppDbContext.HouseFinishes' is null.");
 
 			_context.HouseFinishes.Add(houseFinish);
 			await _context.SaveChangesAsync();
@@ -47,7 +47,7 @@ namespace DreamedHouse.Controllers
 			if (_context.HouseFinishes == null)
 				return NotFound();
 
-			var houseFinish = await _context.HouseFinishes.FindAsync(id);
+			HouseFinish? houseFinish = await _context.HouseFinishes.FindAsync(id);
 
 			if (houseFinish == null)
 				return NotFound();
@@ -87,7 +87,7 @@ namespace DreamedHouse.Controllers
 			if (_context.HouseFinishes == null)
 				return NotFound();
 
-			var houseFinish = await _context.HouseFinishes.FindAsync(id);
+			HouseFinish? houseFinish = await _context.HouseFinishes.FindAsync(id);
 
 			if (houseFinish == null)
 				return NotFound();
