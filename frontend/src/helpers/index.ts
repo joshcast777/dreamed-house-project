@@ -1,3 +1,5 @@
+import backgroundImageStyle from "./backgroundImageStyle.helper";
 import cloudinaryUrl from "./cloudinaryUrl.helper";
+import fetchUrl from "./fetchUrl.helper";
 
-export { cloudinaryUrl as cloudinaryUrlHelper };
+export { backgroundImageStyle as backgroundImageStyleHelper, cloudinaryUrl as cloudinaryUrlHelper, fetchUrl as fetchUrlHelper };

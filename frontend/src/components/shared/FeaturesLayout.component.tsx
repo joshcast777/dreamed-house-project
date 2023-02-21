@@ -13,9 +13,11 @@ interface HouseFeaturesProps {
 export default function FeaturesLayout({ houseFeatures, className }: HouseFeaturesProps): JSX.Element {
 	return (
 		<div className={`grid gap-3 sm:grid-cols-2 ${className}`}>
-			{houseFeatures.map((houseFeature: IHouseFeatures): JSX.Element => (
-				<HouseFeatureComponent key={houseFeature.key} icon={houseFeature.icon} feature={houseFeature.feature} />
-			))}
+			{houseFeatures.map(
+				(houseFeature: IHouseFeatures): JSX.Element => (
+					<HouseFeatureComponent key={houseFeature.key} icon={houseFeature.icon} feature={houseFeature.feature} />
+				)
+			)}
 		</div>
 	);
 }

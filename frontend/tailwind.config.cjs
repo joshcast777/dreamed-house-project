@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-// const { RoundCorners } = require('@cloudinary/url-gen/actions');
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
@@ -15,7 +14,10 @@ module.exports = {
 		extend: {
 			colors: {
 				"primary-color": colors.amber[500],
-				"background-dark": colors.neutral[800]
+				"secondary-color": colors.purple[500],
+				"white-color": colors.neutral[100],
+				"dark-color": colors.neutral[800],
+				"invalid-color": colors.red[500]
 			}
 		}
 	},

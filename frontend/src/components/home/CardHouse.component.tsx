@@ -8,13 +8,13 @@ import { PrimeButton, PrimeCard } from "../../imports/prime-react";
 import { AiOutlineEyeIcon, FaBedIcon, FaBuildingIcon, FaHomeIcon, FaToiletIcon } from "../../imports/react-icons";
 
 // Shared Components
-import { FeaturesLayoutComponent } from ".";
+import { FeaturesLayoutComponent } from "../shared";
 
-// Cloudinary
+// Helpers
 import { cloudinaryUrlHelper } from "../../helpers";
 
 // Interfaces
-import { IHouseFeatures, IHouse } from "../../interfaces";
+import { IHouse, IHouseFeatures } from "../../interfaces";
 
 // Own Interfaces
 interface CardHouseProps {
@@ -57,16 +57,16 @@ export default function CardHouse({ house }: CardHouseProps): JSX.Element {
 		}
 	];
 
-	const header = <img src={cloudinaryUrlHelper(house.houseImages[0].imageUrl)} alt="Card" className="h-60 object-cover rounded-t-md" />;
+	const header: JSX.Element = <img src={cloudinaryUrlHelper(house.houseImages[0].imageUrl)} alt="Card" className="h-60 object-cover rounded-t-md" />;
 
-	const footer = (
+	const footer: JSX.Element = (
 		<Link to={`house-detail/${house.houseId}`} className="card-footer-link">
-			<PrimeButton label="Más información" icon={<AiOutlineEyeIcon className="mr-2 text-xl" />} className="p-button-warning p-button-sm background-color-transition" />
+			<PrimeButton label="Más información" icon={<AiOutlineEyeIcon className="mr-2 text-xl" />} className="p-button-warning p-button-sm button background-color-transition" />
 		</Link>
 	);
 
 	return (
-		<PrimeCard title={house.name} subTitle={`Última actualización: ${new Date(house.updatedAt).toLocaleDateString("en-GB")}`} footer={footer} header={header} className="card shadow-transition">
+		<PrimeCard title={house.name} subTitle={`Última actualización: ${new Date(house.updatedAt).toLocaleDateString("en-GB")}`} footer={footer} header={header} className="card-house shadow-transition">
 			<FeaturesLayoutComponent houseFeatures={featuresData} className="grid-cols-1" />
 		</PrimeCard>
 	);

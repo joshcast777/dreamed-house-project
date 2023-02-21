@@ -1,4 +1,6 @@
-import { ClassName, HeroImage, Title } from "./app.interfaces";
+import { BackgroundImageStyle, ClassName, HeroImage, Title } from "./app.interfaces";
 import { House, HouseFeatures, HouseFinish, HouseImage } from "./house.interface";
+import { FieldInput } from "./input.interfaces";
+import { AuthUser, SignInResponse, User, UserAuthenticated } from "./user.interfaces";
 
-export type { ClassName as IClassName, HeroImage as IHeroImage, House as IHouse, HouseFeatures as IHouseFeatures, HouseFinish as IHouseFinish, HouseImage as IHouseImage, Title as ITitle };
+export type { AuthUser as IAuthUser, BackgroundImageStyle as IBackgroundImageStyle, ClassName as IClassName, FieldInput as IFieldInput, HeroImage as IHeroImage, House as IHouse, HouseFeatures as IHouseFeatures, HouseFinish as IHouseFinish, HouseImage as IHouseImage, SignInResponse as ISignInResponse, Title as ITitle, User as IUser, UserAuthenticated as IUserAuthenticated };

@@ -1,5 +1,12 @@
+export interface BackgroundImageStyle {
+	backgroundImage: string;
+	backgroundPosition: string;
+	backgroundRepeat: string;
+	backgroundSize: string;
+}
+
 export interface ClassName {
-	className: string;
+	className?: string;
 }
 
 export interface HeroImage {

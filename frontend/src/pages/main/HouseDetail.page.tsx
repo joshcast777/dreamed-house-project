@@ -1,33 +1,38 @@
 // Own React
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-
-// Shared Components
-import { FeaturesLayoutComponent, GalleriaComponent, TitleComponent, TopPageComponent } from "../components/shared";
-
-// Own Components
-import { HouseFinishesComponent } from "../components/HouseDetails";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // PrimeReact
-import { PrimeButton, PrimeDivider, PrimeMessage, PrimeProgressSpinner } from "../imports/prime-react";
+import { PrimeButton, PrimeDivider, PrimeMessage, PrimeProgressSpinner } from "../../imports/prime-react";
 
 // React Icons
-import { FaBedIcon, FaBuildingIcon, FaHomeIcon, FaToiletIcon } from "../imports/react-icons";
+import { FaBedIcon, FaBuildingIcon, FaHomeIcon, FaToiletIcon } from "../../imports/react-icons";
+
+// Shared Components
+import { FeaturesLayoutComponent, ImagesliderComponent, HeroImageComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
+
+// Own Components
+import { GalleriaComponent, HouseDetailFooterComponent, HouseFinishesComponent } from "../../components/house_details";
 
 // Store
-import { useAppDispatch, useAppSelector } from "../store";
-import { getHouseFinishes, removeHouseFinishes } from "../store/slices/houseFinishes";
-import { getHouse, removeSelectedHouse, setSelectedHouse } from "../store/slices/houses";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { getHouseFinishes, removeHouseFinishes } from "../../store/slices/houseFinishes";
+import { getHouse, removeSelectedHouse, setSelectedHouse } from "../../store/slices/houses";
 
 // Interfaces
-import { IHouseFeatures } from "../interfaces";
+import { IHouseFeatures } from "../../interfaces";
+import { HouseFinish, HouseImage } from "../../interfaces/house.interface";
 
-export default function HouseDetail() {
-	const { houses, selectedHouse, isLoading: isLoadingHouses } = useAppSelector(state => state.houses);
+export default function HouseDetail(): JSX.Element {
+	const { requestMessage: errors, houses, selectedHouse, isLoading: isLoadingHouses } = useAppSelector(state => state.houses);
+
 	const { isLoading: isLoadingHouseFinishes, selectedHouseFinishes } = useAppSelector(state => state.houseFinishes);
+
 	const dispatch = useAppDispatch();
 
 	const { pathname } = useLocation();
+
+	const navigate = useNavigate();
 
 	useEffect((): (() => void) => {
 		if (houses.length === 0) dispatch(getHouse(pathname.substring(1).split("/").pop()!));
@@ -35,11 +40,13 @@ export default function HouseDetail() {
 
 		dispatch(getHouseFinishes());
 
+		if (errors) navigate("/not-found");
+
 		return (): void => {
 			dispatch(removeHouseFinishes());
 			dispatch(removeSelectedHouse());
 		};
-	}, []);
+	}, [errors]);
 
 	const featuresData: IHouseFeatures[] = [
 		{
@@ -76,7 +83,7 @@ export default function HouseDetail() {
 		}
 	];
 
-	const imageUrls = selectedHouse?.houseImages.map(houseImage => houseImage!.imageUrl);
+	const imageUrls: string[] = selectedHouse?.houseImages.map((houseImage: HouseImage): string => houseImage!.imageUrl)!;
 
 	if (isLoadingHouses && isLoadingHouseFinishes)
 		return (
@@ -87,16 +94,12 @@ export default function HouseDetail() {
 
 	return (
 		<>
-			<TopPageComponent heroImage={{ text: "Detalles de la casa", imageSrc: "header-page-image_vrhxoi" }} title={{ title: selectedHouse?.name! }} />
+			<HeroImageComponent text="Detalles de la casa" imageSrc="header-page-image_vrhxoi" />
+
+			<PageTitleComponent title={selectedHouse?.name!} />
 
 			<div className="responsive-container width-transition lg:flex">
-				<div className="lg:basis-3/4">
-					<GalleriaComponent imageUrls={imageUrls!} />
-
-					<div className="bg-neutral-800 text-neutral-100 p-3 text-sm">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt architecto quae quos nisi pariatur magni esse ad, cumque velit! Iste eveniet assumenda veniam explicabo voluptatibus quia tenetur sed dolorum soluta!</p>
-					</div>
-				</div>
+				<GalleriaComponent imageUrls={imageUrls!} />
 
 				<PrimeDivider className="lg:hidden" />
 
@@ -128,22 +131,12 @@ export default function HouseDetail() {
 					<div className="mb-1 flex justify-between items-center">
 						<p className="text-lg font-bold">Total</p>
 
-						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedHouseFinishes.reduce((current, houseFinish) => current + houseFinish.price, 0)}</p>
+						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedHouseFinishes.reduce((current: number, houseFinish: HouseFinish): number => current + houseFinish.price, 0)}</p>
 					</div>
 
 					<PrimeDivider />
 
-					<div className="flex items-center gap-5 flex-wrap lg:ml-auto">
-						<PrimeMessage severity="warn" text="Iniciar sesión para generar proforma" className="basis-full sm:basis-1/2 lg:basis-full" />
-
-						<Link to="auth/sign-in" className="order-5 basis-full 2xs:flex-1">
-							<PrimeButton label="Iniciar sesión" className="p-button-warning background-color-transition w-full" />
-						</Link>
-
-						<Link to="/" className="basis-full 2xs:flex-1">
-							<PrimeButton label="Cancelar" className="p-button-outlined p-button-warning background-color-transition w-full" />
-						</Link>
-					</div>
+					<HouseDetailFooterComponent />
 				</div>
 			</div>
 		</>

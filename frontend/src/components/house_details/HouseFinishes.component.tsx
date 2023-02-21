@@ -8,15 +8,15 @@ import { useAppSelector } from "../../store";
 import { IHouseFinish } from "../../interfaces";
 
 // Own Interfaces
-interface TypeHouseFinishes {
+interface HouseFinishesData {
 	typeName: string;
 	typeHouseFinish: IHouseFinish[];
 }
 
 export default function HouseFinishes(): JSX.Element {
-	const { floorFinishes, faucetFinishes, doorFinishes } = useAppSelector(state => state.houseFinishes);
+	const { faucetFinishes, floorFinishes, doorFinishes } = useAppSelector(state => state.houseFinishes);
 
-	const typeHouseFinishes: TypeHouseFinishes[] = [
+	const houseFinishesData: HouseFinishesData[] = [
 		{
 			typeName: "Piso",
 			typeHouseFinish: floorFinishes
@@ -33,9 +33,11 @@ export default function HouseFinishes(): JSX.Element {
 
 	return (
 		<>
-			{typeHouseFinishes.map((typeHouseFinish, index) => (
-				<HouseFinishDropdown key={index} index={index} typeHouseFinish={typeHouseFinish} />
-			))}
+			{houseFinishesData.map(
+				(houseFinishData: HouseFinishesData, index: number): JSX.Element => (
+					<HouseFinishDropdown key={index} index={index} typeHouseFinish={houseFinishData} />
+				)
+			)}
 		</>
 	);
 }

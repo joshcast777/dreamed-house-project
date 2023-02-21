@@ -9,9 +9,18 @@ interface SocialLinkProps {
 
 export default function SocialLinks(): JSX.Element {
 	const socialLinks: SocialLinkProps[] = [
-		{ link: "https://www.instagram.com/", icon: <BsInstagramIcon className="text-rose-500" /> },
-		{ link: "https://www.facebook.com/", icon: <BsFacebookIcon className="text-blue-600" /> },
-		{ link: "https://twitter.com/", icon: <BsTwitterIcon className="text-sky-600" /> }
+		{
+			link: "https://www.instagram.com/",
+			icon: <BsInstagramIcon className="text-rose-500" />
+		},
+		{
+			link: "https://www.facebook.com/",
+			icon: <BsFacebookIcon className="text-blue-600" />
+		},
+		{
+			link: "https://twitter.com/",
+			icon: <BsTwitterIcon className="text-sky-600" />
+		}
 	];
 
 	return (

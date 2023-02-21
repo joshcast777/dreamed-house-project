@@ -1,16 +1,19 @@
 // Own React
 import { Link } from "react-router-dom";
 
-// Cloudinary
+// Helpers
 import { cloudinaryUrlHelper } from "../../helpers";
 
-// Interfaces
-import { IClassName } from "../../interfaces";
+// Own Interfaces
+interface LogoLinkProps {
+	className?: string;
+	imgClassName?: string;
+}
 
-export default function LogoLink({ className }: IClassName): JSX.Element {
+export default function LogoLink({ className, imgClassName }: LogoLinkProps): JSX.Element {
 	return (
-		<Link to="/">
-			<img src={cloudinaryUrlHelper("logo_yx6nb0.png")} alt="logo" className={className} />
+		<Link to="/" className={`flex justify-center items-center ${className}`}>
+			<img src={cloudinaryUrlHelper("logo_yx6nb0.png")} alt="logo" className={imgClassName} />
 		</Link>
 	);
 }

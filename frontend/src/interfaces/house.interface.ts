@@ -12,17 +12,17 @@ export interface House {
 }
 
 export interface HouseFeatures {
-	key: string;
 	feature: JSX.Element;
 	icon: JSX.Element;
+	key: string;
 }
 
 export interface HouseFinish {
+	createdAt: string;
 	houseFinisheId: number;
 	name: string;
 	price: number;
 	typeFinish: string;
-	createdAt: string;
 	updatedAt: string;
 }
 

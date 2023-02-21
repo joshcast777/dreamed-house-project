@@ -14,6 +14,10 @@
 		transition: background-color 0.2s;
 	}
 
+	.border-transition {
+		transition: border 0.2s;
+	}
+
 	.font-transition {
 		transition: font-size 0.2s, line-height 0.2s;
 	}
