@@ -14,10 +14,10 @@ logs
 */vite.config.ts.timestamp-*
 
 # Editor directories and files
-*/assets/*
-*/bin/*
-*/.vs/*
-*/.vscode/*
+*/**/assets
+*/**/bin
+*/**/.vs
+*/**/.vscode
 */!.vscode/extensions.json
 */.idea
 */.DS_Store
