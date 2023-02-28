@@ -27,7 +27,7 @@ namespace DreamedHouse.Controllers
 		[HttpPost("SignIn")]
 		public async Task<ActionResult<AuthUser>> PostAuthUser(AuthUser authUser)
 		{
-			User? user = await _context.Users.FirstOrDefaultAsync(user => user.Email == authUser.Email && user.Password == authUser.Password);
+			var user = await _context.Users.FirstOrDefaultAsync(user => user.Email == authUser.Email && user.Password == authUser.Password);
 
 			if (user == null)
 				return BadRequest("Correo o contraseña inexistentes");
@@ -35,18 +35,7 @@ namespace DreamedHouse.Controllers
 				return Ok(new
 				{
 					token = GenerateToken(user),
-					userAuthenticated = new
-					{
-						userId = user.UserId,
-						dni = user.Dni,
-						firstName = user.FirstName,
-						lastName = user.LastName,
-						phoneNumber = user.PhoneNumber,
-						email = user.Email,
-						createdAt = user.CreatedAt,
-						updatedAt = user.UpdatedAt,
-						roleId = user.RoleId
-					}
+					userAuthenticated = user
 				});
 		}
 
@@ -59,16 +48,16 @@ namespace DreamedHouse.Controllers
 				return Problem("Entity set 'AppDbContext.Users' is null.");
 
 			if (user.Email.Substring(user.Email.IndexOf("@") + 1) == "dreamedhouse.com")
-				return BadRequest("Correo inválido.");
+				return BadRequest("Correo inválido");
 
 			if (UserDniDuplicated(user.Dni))
-				return BadRequest("Cédula ya existente.");
+				return BadRequest("Cédula, celular o correo ya existentes");
 
 			if (UserPhoneNumberDuplicated(user.PhoneNumber))
-				return BadRequest("Número de celular ya existente.");
+				return BadRequest("Cédula, celular o correo ya existentes");
 
 			if (UserEmailDuplicated(user.Email))
-				return BadRequest("Correo ya existente.");
+				return BadRequest("Cédula, celular o correo ya existentes");
 
 			user.RoleId = 2;
 			user.CreatedAt = DateTime.Now;
@@ -82,22 +71,22 @@ namespace DreamedHouse.Controllers
 
 		private string GenerateToken(User user)
 		{
-			List<Claim>? claims = new List<Claim>
+			var claims = new List<Claim>
 			{
 				new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
 				new Claim(ClaimTypes.Email, user.Email)
 			};
 
-			SymmetricSecurityKey? key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
+			var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
 
-			SecurityTokenDescriptor? tokenDescriptor = new SecurityTokenDescriptor
+			var tokenDescriptor = new SecurityTokenDescriptor
 			{
 				Subject = new ClaimsIdentity(claims),
 				Expires = System.DateTime.Now.AddDays(1),
 				SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature)
 			};
 
-			JwtSecurityTokenHandler? tokenHandler = new JwtSecurityTokenHandler();
+			var tokenHandler = new JwtSecurityTokenHandler();
 
 			return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
 		}

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using DreamedHouse.Data;
 using DreamedHouse.Models;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace DreamedHouse.Controllers
 {
@@ -19,23 +20,23 @@ namespace DreamedHouse.Controllers
 		}
 
 		// GET: api/User
-		[HttpGet]
-		public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-		{
-			if (_context.Users == null)
-				return NotFound();
+		// [HttpGet]
+		// public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+		// {
+		// 	if (_context.Users == null)
+		// 		return NotFound();
 
-			return await _context.Users.ToListAsync();
-		}
+		// 	return await _context.Users.ToListAsync();
+		// }
 
 		// GET: api/User/5
-		[HttpGet("{id}")]
-		public async Task<ActionResult<User>> GetUser(int id)
+		[HttpGet("{userId}")]
+		public async Task<ActionResult<User>> GetUser(int userId)
 		{
 			if (_context.Users == null)
 				return NotFound();
 
-			User? user = await _context.Users.FindAsync(id);
+			var user = await _context.Users.FindAsync(userId);
 
 			if (user == null)
 				return NotFound();
@@ -45,11 +46,20 @@ namespace DreamedHouse.Controllers
 
 		// PUT: api/User/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("{id}")]
-		public async Task<IActionResult> PutUser(int id, User user)
+		[HttpPut("{userId}")]
+		public async Task<IActionResult> PutUser(int userId, User user)
 		{
-			if (id != user.UserId)
+			if (userId != user.UserId)
 				return BadRequest();
+
+			if (user.Email.Substring(user.Email.IndexOf("@") + 1) == "dreamedhouse.com")
+				return BadRequest("Correo inválido.");
+
+			if (UserPhoneNumberDuplicated(user.UserId, user.PhoneNumber))
+				return BadRequest("Número de celular ya existente.");
+
+			if (UserEmailDuplicated(user.UserId, user.Email))
+				return BadRequest("Correo ya existente.");
 
 			_context.Entry(user).State = EntityState.Modified;
 
@@ -59,23 +69,54 @@ namespace DreamedHouse.Controllers
 			}
 			catch (DbUpdateConcurrencyException)
 			{
-				if (!UserExists(id))
+				if (!UserExists(userId))
 					return NotFound();
 				else
 					throw;
 			}
 
-			return NoContent();
+			return Ok(JsonConvert.SerializeObject("Usuario actualizado correctamente"));
+		}
+
+		// PUT: api/User/Password/5
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPut("Password/{userId}")]
+		public async Task<IActionResult> PutUserPassword(int userId, ChangePassword data)
+		{
+			if (userId != data.User.UserId)
+				return BadRequest();
+
+			if (!ValidateUserPassword(userId, data.User.Password))
+				return BadRequest("Contraseña actual no coincide");
+
+			data.User.Password = data.NewPassword;
+			data.User.UpdatedAt = DateTime.Now;
+
+			_context.Entry(data.User).State = EntityState.Modified;
+
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!UserExists(userId))
+					return NotFound();
+				else
+					throw;
+			}
+
+			return Ok(JsonConvert.SerializeObject("Contraseña actualizada correctamente"));
 		}
 
 		// DELETE: api/User/5
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteUser(int id)
+		[HttpDelete("{userId}")]
+		public async Task<IActionResult> DeleteUser(int userId)
 		{
 			if (_context.Users == null)
 				return NotFound();
 
-			User? user = await _context.Users.FindAsync(id);
+			var user = await _context.Users.FindAsync(userId);
 
 			if (user == null)
 				return NotFound();
@@ -89,6 +130,21 @@ namespace DreamedHouse.Controllers
 		private bool UserExists(int userId)
 		{
 			return (_context.Users?.Any(user => user.UserId == userId)).GetValueOrDefault();
+		}
+
+		private bool UserPhoneNumberDuplicated(int userId, string userPhoneNumber)
+		{
+			return (_context.Users?.Any(user => user.PhoneNumber == userPhoneNumber && user.UserId != userId)).GetValueOrDefault();
+		}
+
+		private bool UserEmailDuplicated(int userId, string userEmail)
+		{
+			return (_context.Users?.Any(user => user.Email == userEmail && user.UserId != userId)).GetValueOrDefault();
+		}
+
+		private bool ValidateUserPassword(int userId, string password)
+		{
+			return (_context.Users?.Any(user => user.Password == password && user.UserId == userId)).GetValueOrDefault();
 		}
 	}
 }

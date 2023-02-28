@@ -5,15 +5,15 @@ namespace DreamedHouse.Data;
 
 public partial class AppDbContext : DbContext
 {
-	public virtual DbSet<House> Houses { get; set; }
+	public virtual DbSet<House> Houses { get; set; } = null!;
 
-	public virtual DbSet<HouseFinish> HouseFinishes { get; set; }
+	public virtual DbSet<HouseFinish> HouseFinishes { get; set; } = null!;
 
-	public virtual DbSet<HouseImage> HouseImages { get; set; }
+	public virtual DbSet<HouseImage> HouseImages { get; set; } = null!;
 
-	public virtual DbSet<Role> Roles { get; set; }
+	public virtual DbSet<Role> Roles { get; set; } = null!;
 
-	public virtual DbSet<User> Users { get; set; }
+	public virtual DbSet<User> Users { get; set; } = null!;
 
 	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
