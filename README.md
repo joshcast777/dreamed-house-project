@@ -37,7 +37,7 @@ The houses and their finishes can be changed by an administrator user, who must 
 
 - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)
 - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
-- Clever Cloud
+- [Clever Cloud](https://www.clever-cloud.com/)
 - [Cloudinary](https://cloudinary.com/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [JWT](https://jwt.io/)
