@@ -1,7 +1,7 @@
 // Own react
 import { FieldError } from "react-hook-form";
 
-// Own Components
+// Shared Components
 import { InputErrorMessageComponent } from ".";
 
 // Own Interfaces

@@ -1,5 +1,5 @@
 // Own React
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // PrimeReact
@@ -12,7 +12,8 @@ import { AiOutlineLogoutIcon } from "../../imports/react-icons";
 import { LogoLinkComponent } from ".";
 
 // Store
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { signOut } from "../../store/slices/user";
 
 // Own Interfaces
 interface ItemTemplateProps {
@@ -23,10 +24,14 @@ interface ItemTemplateProps {
 export default function MenuBar(): JSX.Element {
 	const { userAuthenticated } = useAppSelector(state => state.user);
 
+	const dispatch = useAppDispatch();
+
+	const navigate = useNavigate();
+
 	const [itemsData, setItemsData] = useState<ItemTemplateProps[]>([{ label: "Inicio", link: "/" }]);
 
 	useEffect((): void => {
-		if (userAuthenticated || localStorage.getItem("token")) {
+		if (userAuthenticated) {
 			setItemsData([
 				{ label: "Inicio", link: "/" },
 				{ label: "Perfil", link: "/user" }
@@ -37,7 +42,7 @@ export default function MenuBar(): JSX.Element {
 				{ label: "Iniciar sesión", link: "/auth/sign-in" }
 			]);
 		}
-	}, []);
+	}, [userAuthenticated]);
 
 	const items: PrimeMenuItem[] = itemsData.map(
 		({ label, link }: ItemTemplateProps): PrimeMenuItem => ({
@@ -49,18 +54,23 @@ export default function MenuBar(): JSX.Element {
 		})
 	);
 
+	const signOutUser = () => {
+		dispatch(signOut());
+
+		navigate("/");
+	};
+
 	const start: JSX.Element = <LogoLinkComponent className="mr-2" />;
 
-	const end: JSX.Element =
-		userAuthenticated || localStorage.getItem("token") ? (
-			<NavLink to="/auth/sign-out">
-				<PrimeButton label="Cerrar sesión" className="p-button-text p-button-warning button background-color-transition hidden sm:inline-flex" />
+	const end: JSX.Element = userAuthenticated ? (
+		<>
+			<PrimeButton label="Cerrar sesión" className="p-button-text p-button-warning button background-color-transition hidden sm:inline-flex" onClick={signOutUser} />
 
-				<PrimeButton icon={<AiOutlineLogoutIcon />} className="p-button-warning p-button-text button background-color-transition sm:hidden" />
-			</NavLink>
-		) : (
-			<></>
-		);
+			<PrimeButton icon={<AiOutlineLogoutIcon />} className="p-button-warning p-button-text button background-color-transition sm:hidden" onClick={signOutUser} />
+		</>
+	) : (
+		<></>
+	);
 
 	return (
 		<div className="sticky top-0 left-0 right-0 z-10 bg-dark-color/80 backdrop-blur-sm">

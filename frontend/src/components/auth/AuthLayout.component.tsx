@@ -2,7 +2,7 @@
 import { LogoLinkComponent } from "../shared";
 
 // Helpers
-import { backgroundImageStyleHelper, cloudinaryUrlHelper } from "../../helpers";
+import { backgroundImageStyleHelper } from "../../helpers";
 
 // Own Interfaces
 interface AuthLayoutProps {

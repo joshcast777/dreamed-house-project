@@ -1,5 +1,10 @@
+// Own react
 import { Navigate, Route, Routes } from "react-router-dom";
+
+// Shared Components
 import { PageLayoutComponent } from "../../components/shared";
+
+// Pages
 import { UserPage } from "../../pages/user";
 
 export default function User(): JSX.Element {

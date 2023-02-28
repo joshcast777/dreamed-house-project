@@ -2,7 +2,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 // Shared Components
-import { FooterComponent, MenuBarComponent, PageLayoutComponent } from "../../components/shared";
+import { PageLayoutComponent } from "../../components/shared";
 
 // Pages
 import { HomePage, HouseDetailPage } from "../../pages/main";

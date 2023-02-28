@@ -1,15 +1,15 @@
 // Own React
 import { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // PrimeReact
-import { PrimeButton, PrimeDivider, PrimeMessage, PrimeProgressSpinner } from "../../imports/prime-react";
+import { PrimeButton, PrimeDivider, PrimeProgressSpinner } from "../../imports/prime-react";
 
 // React Icons
 import { FaBedIcon, FaBuildingIcon, FaHomeIcon, FaToiletIcon } from "../../imports/react-icons";
 
 // Shared Components
-import { FeaturesLayoutComponent, ImagesliderComponent, HeroImageComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
+import { FeaturesLayoutComponent, HeroImageComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
 
 // Own Components
 import { GalleriaComponent, HouseDetailFooterComponent, HouseFinishesComponent } from "../../components/house_details";

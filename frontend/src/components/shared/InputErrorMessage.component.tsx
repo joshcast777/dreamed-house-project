@@ -8,5 +8,5 @@ interface InputErrorMessageProps {
 }
 
 export default function InputErrorMessage({ errorMessage, message }: InputErrorMessageProps): JSX.Element {
-	return <div className="pl-3 h-6">{errorMessage && <span className="text-invalid-color">{message}</span>}</div>;
+	return <div className="pl-3 h-auto" style={{ minHeight: "1.5rem" }}>{errorMessage && <span className="text-danger-color">{message}</span>}</div>;
 }

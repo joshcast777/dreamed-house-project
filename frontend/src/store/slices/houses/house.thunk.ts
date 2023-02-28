@@ -1,8 +1,10 @@
 // Redux
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// Axios Instances
+// API's
 import { getHouseApi, getHousesApi } from "../../../api";
+
+// Custom Hooks
 import { useFetch } from "../../../hooks";
 
 // Interfaces

@@ -1,4 +1,4 @@
-import { user, removeRequestMessage } from "./user.slice";
-import { getUserByEmail, signIn, signUp } from "./user.thunks";
+import { user, removeRequestMessage, setUserAuthenticated, signOut } from "./user.slice";
+import { changePassword, deleteUser, getUser, signIn, signUp, updateUser } from "./user.thunks";
 
-export { getUserByEmail, removeRequestMessage, signIn, signUp, user };
+export { changePassword, deleteUser, getUser, removeRequestMessage, setUserAuthenticated, signIn, signOut, signUp, updateUser, user };

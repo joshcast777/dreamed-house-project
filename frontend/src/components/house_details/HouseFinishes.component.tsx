@@ -1,5 +1,5 @@
 // Own Components
-import HouseFinishDropdown from "./HouseFinishDropdown.component";
+import { HouseFinishDropdownComponent } from ".";
 
 // Store
 import { useAppSelector } from "../../store";
@@ -35,7 +35,7 @@ export default function HouseFinishes(): JSX.Element {
 		<>
 			{houseFinishesData.map(
 				(houseFinishData: HouseFinishesData, index: number): JSX.Element => (
-					<HouseFinishDropdown key={index} index={index} typeHouseFinish={houseFinishData} />
+					<HouseFinishDropdownComponent key={index} index={index} typeHouseFinish={houseFinishData} />
 				)
 			)}
 		</>

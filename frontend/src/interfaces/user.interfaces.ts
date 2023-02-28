@@ -3,9 +3,27 @@ export interface AuthUser {
 	password: string;
 }
 
+export interface ChangePassword {
+	data: {
+		newPassword: string;
+		user: User;
+	};
+	token: string;
+}
+
+export interface UserData {
+	token: string;
+	userId: number;
+}
+
 export interface SignInResponse {
 	token: string;
-	userAuthenticated: UserAuthenticated;
+	userAuthenticated: User;
+}
+
+export interface UpdateUser {
+	token: string;
+	user: User;
 }
 
 export interface User {
@@ -18,16 +36,5 @@ export interface User {
 	phoneNumber: string;
 	roleId: number;
 	updatedAt: string;
-}
-
-export interface UserAuthenticated {
-	createdAt: string;
-	dni: string;
-	email: string;
-	firstName: string;
-	lastName: string;
-	phoneNumber: string;
-	roleId: number;
-	updatedAt: string;
-	userId: number;
+	userId?: number;
 }

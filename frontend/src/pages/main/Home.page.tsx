@@ -7,12 +7,19 @@ import { PrimeProgressSpinner } from "../../imports/prime-react";
 // Shared Components
 import { CardLayoutComponent, HeroImageComponent, PageTitleComponent } from "../../components/shared";
 
+// Own Components
+import { CardHouseComponent } from "../../components/home";
+
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { getHouses, removeHouses } from "../../store/slices/houses";
+import { getHouses } from "../../store/slices/houses";
+
+// Interfaces
+import { IHouse } from "../../interfaces";
 
 export default function Home(): JSX.Element {
 	const { houses, isLoading } = useAppSelector(state => state.houses);
+
 	const dispatch = useAppDispatch();
 
 	useEffect((): void => {
@@ -32,7 +39,15 @@ export default function Home(): JSX.Element {
 
 			<PageTitleComponent title="Lista de casas" />
 
-			<CardLayoutComponent />
+			<CardLayoutComponent>
+				<>
+					{houses.map(
+						(house: IHouse): JSX.Element => (
+							<CardHouseComponent key={house.houseId} house={house} />
+						)
+					)}
+				</>
+			</CardLayoutComponent>
 		</>
 	);
 }

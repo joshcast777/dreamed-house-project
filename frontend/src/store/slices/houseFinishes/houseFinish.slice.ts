@@ -30,24 +30,24 @@ export const houseFinish = createSlice({
 	name: "houseFinish",
 	initialState,
 	reducers: {
-		removeHouseFinishes: state => {
+		removeHouseFinishes: (state): void => {
 			state.floorFinishes = [];
 			state.faucetFinishes = [];
 			state.doorFinishes = [];
 			state.selectedHouseFinishes = [];
 		},
-		setSelectedHouseFinishes: (state, action: PayloadAction<{ index: number; houseFinish: IHouseFinish }>) => {
+		setSelectedHouseFinishes: (state, action: PayloadAction<{ index: number; houseFinish: IHouseFinish }>): void => {
 			state.selectedHouseFinishes[action.payload.index] = action.payload.houseFinish;
 		},
-		startLoadingHouseFinishes: state => {
+		startLoadingHouseFinishes: (state): void => {
 			state.isLoading = true;
 		}
 	},
 	extraReducers: builder => {
-		builder.addCase(getHouseFinishes.pending, state => {
+		builder.addCase(getHouseFinishes.pending, (state): void => {
 			state.isLoading = true;
 		});
-		builder.addCase(getHouseFinishes.fulfilled, (state, action) => {
+		builder.addCase(getHouseFinishes.fulfilled, (state, action): void => {
 			state.isLoading = false;
 			state.floorFinishes = (action.payload as IHouseFinish[]).filter((houseFinish: IHouseFinish): boolean => houseFinish.typeFinish === "FLOOR");
 			state.faucetFinishes = (action.payload as IHouseFinish[]).filter((houseFinish: IHouseFinish): boolean => houseFinish.typeFinish === "FAUCET");

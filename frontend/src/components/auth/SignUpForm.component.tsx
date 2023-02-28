@@ -4,13 +4,16 @@ import { PrimeInputMask, PrimeInputText, PrimePassword, PrimeProgressSpinner } f
 // React Icons
 import { CgArrowLeftOIcon } from "../../imports/react-icons";
 
+// Shared Components
+import { FieldInputComponent } from "../shared";
+
 // Form & Validation
 import { Controller, FieldError, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // Own Components
-import { FieldInputComponent, FormButtonsComponent, HeaderAuthFormComponent } from ".";
+import { FormButtonsComponent, HeaderAuthFormComponent } from ".";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -40,11 +43,11 @@ const defaultValues: FormData = {
 };
 
 export default function SignUpForm(): JSX.Element {
-	const inputTextClasses = (error: FieldError): string => `input input-text border-transition ${error ? "border-invalid-color" : ""}`;
+	const inputTextClasses = (error: FieldError): string => `input input-text border-transition ${error ? "border-danger-color" : ""}`;
 
 	const inputPasswordClasses = (error: FieldError): { className: string; inputClassName: string } => ({
 		className: "input input-password border-transition",
-		inputClassName: error ? "border-invalid-color enabled:focus:border-invalid-color" : ""
+		inputClassName: error ? "border-danger-color enabled:focus:border-danger-color" : ""
 	});
 
 	const { isLoading } = useAppSelector(state => state.user);
@@ -67,7 +70,11 @@ export default function SignUpForm(): JSX.Element {
 				.string()
 				.required("Correo requerido")
 				.matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Formato de correo inválido"),
-			password: yup.string().required("Contraseña requerida")
+			password: yup
+				.string()
+				.required("Contraseña requerida")
+				.min(8, "Mínimo 8 caracteres")
+				.matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, "Al menos una mayúscula, una minúscula y un número")
 		})
 		.required();
 
@@ -80,10 +87,10 @@ export default function SignUpForm(): JSX.Element {
 
 	const onSubmit: SubmitHandler<FormData> = (data: FormData): void => {
 		const userData: IUser = {
+			...data,
 			createdAt: new Date().toLocaleString(),
 			updatedAt: new Date().toLocaleString(),
-			roleId: 2,
-			...data
+			roleId: 2
 		};
 
 		dispatch(signUp(userData));
@@ -164,7 +171,7 @@ export default function SignUpForm(): JSX.Element {
 							control={control}
 							render={({ field }): JSX.Element => (
 								<FieldInputComponent htmlFor={field.name} label="Contraseña" errorMessage={formState.errors[field.name]!}>
-									<PrimePassword inputId={field.name} {...field} inputRef={field.ref} placeholder="Password" className={`${inputPasswordClasses(formState.errors[field.name]!).className} ${toggleAnimate(formState.errors[field.name]!)}`} inputClassName={inputPasswordClasses(formState.errors[field.name]!).inputClassName} toggleMask />
+									<PrimePassword inputId={field.name} {...field} inputRef={field.ref} placeholder="Contraseña" className={`${inputPasswordClasses(formState.errors[field.name]!).className} ${toggleAnimate(formState.errors[field.name]!)}`} inputClassName={inputPasswordClasses(formState.errors[field.name]!).inputClassName} toggleMask />
 								</FieldInputComponent>
 							)}
 						/>
