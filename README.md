@@ -1,20 +1,18 @@
 # Casa Soñada
 
-## Description
+## Descripción
 
-A project for Software Verification and Validation class in University
-
----
-
-This project is for users to create house proformas. Users will have to log in, after registering, to be able to save and view their proformas.
-
-The houses and their finishes can be changed by an administrator user, who must log in, but the administrator does not have to register, this user will have to be registered through the company's general system.
+Un proyecto para la materia Veridicación y Validación de Software
 
 ---
 
-## Technologies
+Este proyecto es para que los usuarios creen proformas de casas. Los usuarios deberán iniciar sesión, después de registrarse, para poder guardar y ver sus proformas.
 
-### Code editors or IDE's
+---
+
+## Herramientas
+
+### Editores de código e IDEs
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -37,8 +35,11 @@ The houses and their finishes can be changed by an administrator user, who must 
 
 - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)
 - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
-- [Clever Cloud](https://www.clever-cloud.com/)
 - [Cloudinary](https://cloudinary.com/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [JWT](https://jwt.io/)
+
+### Database
+
+- [Clever Cloud](https://www.clever-cloud.com/)
 - [MySQL](https://www.mysql.com/)
