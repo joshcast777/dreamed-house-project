@@ -20,13 +20,13 @@ import { getProformas, removeProformas } from "../../store/slices/proformas";
  * @returns {JSX.Element}
  */
 export default function Proforma(): JSX.Element {
-	const { token } = useAppSelector(state => state.user);
-	const { isLoading, proformas, requestMessage } = useAppSelector(state => state.proforma);
+	const { token, userAuthenticated } = useAppSelector(state => state.user);
+	const { isLoading, requestMessage } = useAppSelector(state => state.proforma);
 
 	const dispatch = useAppDispatch();
 
 	useEffect((): (() => void) => {
-		dispatch(getProformas(token));
+		dispatch(getProformas({token, userId: userAuthenticated?.userId! }));
 
 		return (): void => {
 			dispatch(removeProformas());

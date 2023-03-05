@@ -33,14 +33,21 @@ namespace DreamedHouse.Controllers
 		/// </summary>
 		/// <param name="authUser">Data which the user needs to be authenticated</param>
 		/// <returns>An object representing the token generated and the User data</returns>
-		public async Task<ActionResult<AuthUser>> PostAuthUser(AuthUser authUser)
+		public async Task<ActionResult<SignInResponse>> PostAuthUser(AuthUser authUser)
 		{
 			var user = await _context.Users.FirstOrDefaultAsync(user => user.Email == authUser.Email && user.Password == authUser.Password);
 
 			if (user == null)
 				return BadRequest("Combinación no encontrada");
 			else
-				return Ok(new { token = GenerateToken(user), userAuthenticated = user });
+			{
+				SignInResponse signInresponse = new SignInResponse();
+
+				signInresponse.Token = GenerateToken(user);
+				signInresponse.UserAuthenticated = user;
+
+				return Ok(signInresponse);
+			}
 		}
 
 		// POST: api/AuthUser/SingUp
@@ -51,7 +58,7 @@ namespace DreamedHouse.Controllers
 		/// </summary>
 		/// <param name="user">User data to be registered</param>
 		/// <returns>A string indicating whether the User was registered or not</returns>
-		public async Task<ActionResult<User>> PostUser(User user)
+		public async Task<ActionResult<string>> PostUser(User user)
 		{
 			if (_context.Users == null)
 				return Problem("La entidad 'Usuarios' no existe");

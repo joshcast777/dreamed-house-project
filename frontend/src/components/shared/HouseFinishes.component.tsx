@@ -119,7 +119,7 @@ export default function HouseFinishes(): JSX.Element {
 						<div className="mb-1 flex justify-between items-center px-2">
 							<p className="text-lg font-bold">{title}</p>
 
-							<p className="text-lg font-semibold">$ {selectedTypeValue?.price}</p>
+							<p className="text-lg font-semibold">$ {selectedTypeValue?.price || 0}</p>
 						</div>
 
 						<PrimeDropdown value={selectedTypeValue!} onChange={(event: PrimeDropdownChangeEvent): void => setType(event.value)} options={types} optionLabel="name" placeholder="Seleccione uno..." className="dropdown w-full text-sm" />

@@ -70,11 +70,9 @@ const defaultValues: FormData = {
  * @returns {JSX.Element}
  */
 export default function SignInForm(): JSX.Element {
-	const { isLoading, requestMessage } = useAppSelector(state => state.user);
+	const { isLoading } = useAppSelector(state => state.user);
 
 	const dispatch = useAppDispatch();
-
-	const navigate = useNavigate();
 
 	const inputTextClasses = (error: FieldError): string => `input input-text border-transition${error ? " border-danger-color" : ""}`;
 
@@ -104,8 +102,6 @@ export default function SignInForm(): JSX.Element {
 		const userData: IAuthUser = { ...data };
 
 		dispatch(signIn(userData));
-
-		if (!requestMessage.startsWith("Error:")) navigate("/");
 	};
 
 	if (isLoading)

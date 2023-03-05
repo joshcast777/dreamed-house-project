@@ -47,4 +47,6 @@ html {
 ::after,
 ::before {
 	box-sizing: inherit;
+
+	@apply break-all;
 }

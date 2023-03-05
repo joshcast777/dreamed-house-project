@@ -52,7 +52,7 @@ namespace DreamedHouse.Controllers
 		/// <param name="userId">User ID whose data will be updated</param>
 		/// <param name="user">User data that will be saved</param>
 		/// <returns>A string indicating whether the User was updated or not</returns>
-		public async Task<IActionResult> PutUser(int userId, User user)
+		public async Task<ActionResult<string>> PutUser(int userId, User user)
 		{
 			if (userId != user.UserId)
 				return BadRequest("El usuario no coincide con el ID");
@@ -88,7 +88,7 @@ namespace DreamedHouse.Controllers
 		/// <param name="userId">User ID whose data will be updated</param>
 		/// <param name="data">Data with the new Password and the User data</param>
 		/// <returns>A string indicating whether the password was changed or not</returns>
-		public async Task<IActionResult> PutUserPassword(int userId, ChangePassword data)
+		public async Task<ActionResult<string>> PutUserPassword(int userId, ChangePassword data)
 		{
 			if (userId != data.User.UserId)
 				return BadRequest("El usuario no coincide con el ID");

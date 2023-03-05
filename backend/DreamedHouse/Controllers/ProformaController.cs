@@ -30,7 +30,7 @@ namespace DreamedHouse.Controllers
 		/// </summary>
 		/// <param name="proforma">Proforma data whicg will be saved</param>
 		/// <returns>A string indicating whether the Proforma was saved or not</returns>
-		public async Task<ActionResult<Proforma>> PostProforma(Proforma proforma)
+		public async Task<ActionResult<string>> PostProforma(Proforma proforma)
 		{
 			if (_context.Proformas == null)
 				return Problem("La Entidad 'Proformas' no existe");
@@ -72,10 +72,12 @@ namespace DreamedHouse.Controllers
 		/// <param name="proformaId">Proforma ID whose data will be updated</param>
 		/// <param name="proforma">Proforma data that will be saved</param>
 		/// <returns>A string indicating whether the Proforma was updated or not</returns>
-		public async Task<IActionResult> PutProforma(int proformaId, Proforma proforma)
+		public async Task<ActionResult<string>> PutProforma(int proformaId, Proforma proforma)
 		{
 			if (proformaId != proforma.ProformaId)
 				return BadRequest("La proforma no coincide con el ID");
+
+			proforma.UpdatedAt = DateTime.Now;
 
 			_context.Entry(proforma).State = EntityState.Modified;
 
@@ -101,7 +103,7 @@ namespace DreamedHouse.Controllers
 		/// </summary>
 		/// <param name="proformaId">Proforma ID whose data will be remove</param>
 		/// <returns>A string indicating whether the Proforma was deleted or not</returns>
-		public async Task<IActionResult> DeleteProforma(int proformaId)
+		public async Task<ActionResult<string>> DeleteProforma(int proformaId)
 		{
 			if (_context.Proformas == null)
 				return NotFound("No se encontraron proformas");

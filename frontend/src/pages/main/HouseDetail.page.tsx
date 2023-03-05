@@ -110,7 +110,7 @@ export default function HouseDetail(): JSX.Element {
 					<div className="mb-1 flex justify-between items-center">
 						<p className="text-lg font-bold">Total</p>
 
-						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedDoorType?.price! + selectedFaucetType?.price! + selectedFloorType?.price!}</p>
+						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedDoorType?.price! + selectedFaucetType?.price! + selectedFloorType?.price! || 0}</p>
 					</div>
 
 					<PrimeDivider />

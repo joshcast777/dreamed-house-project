@@ -69,12 +69,12 @@ export default function ProformaTable(): JSX.Element {
 		setVisible(true);
 	};
 
-	const columnIdBodyTemplate = (rowData: IProforma): JSX.Element => <p className="text-center">{rowData.proformaId!}</p>;
+	const columnNumberBodyTemplate = (rowData: IProforma): JSX.Element => <p className="text-center">{proformas.indexOf(rowData) + 1}</p>;
 
 	const columnDateBodyTemplate = (rowData: IProforma): JSX.Element => <p className="text-center">{new Intl.DateTimeFormat(document.documentElement.lang || navigator.language).format(new Date(rowData.updatedAt!))}</p>;
 
 	const columnActionBodyTemplate = (rowData: IProforma): JSX.Element => (
-		<div className="w-auto ml-auto flex items-center gap-3 lg:mx-auto lg:justify-evenly">
+		<div className="w-auto mx-auto flex items-center gap-3 xs:ml-auto xs:mr-0 lg:mx-auto lg:justify-evenly">
 			<PrimeButton icon="pi pi-pencil" className="p-button-warning p-button-rounded p-button-outlined button" onClick={(): void => handleEditProforma(rowData)} />
 
 			<PrimeButton icon="pi pi-trash" className="p-button-danger p-button-rounded p-button-outlined button" onClick={() => confirmDeleteProforma(rowData)} />
@@ -90,7 +90,7 @@ export default function ProformaTable(): JSX.Element {
 			</PrimeDialog>
 
 			<PrimeDataTable value={proformas} size="small" showGridlines stripedRows>
-				<PrimeColumn body={columnIdBodyTemplate} header="ID"></PrimeColumn>
+				<PrimeColumn body={columnNumberBodyTemplate} header="N°"></PrimeColumn>
 				<PrimeColumn field="house.name" header="Casa"></PrimeColumn>
 				<PrimeColumn field="doorType.name" header="Puerta"></PrimeColumn>
 				<PrimeColumn field="floorType.name" header="Piso"></PrimeColumn>
