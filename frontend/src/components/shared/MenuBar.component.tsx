@@ -13,7 +13,7 @@ import { LogoLinkComponent } from ".";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { signOut } from "../../store/slices/user";
+import { signOut } from "../../store/slices/users";
 
 // Own Interfaces
 interface ItemTemplateProps {
@@ -54,7 +54,7 @@ export default function MenuBar(): JSX.Element {
 		})
 	);
 
-	const signOutUser = () => {
+	const signOutUser = (): void => {
 		dispatch(signOut());
 
 		navigate("/");

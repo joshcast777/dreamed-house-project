@@ -14,7 +14,7 @@ import * as yup from "yup";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { changePassword } from "../../store/slices/user";
+import { changePassword } from "../../store/slices/users";
 
 // Interfaces
 import { IChangePassword } from "../../interfaces/";
@@ -35,7 +35,7 @@ const defaultValues: FormData = {
 	newPassword: ""
 };
 
-export default function ChangePasswordForm({ visibleFunction }: ChangePasswordFormProps) {
+export default function ChangePasswordForm({ visibleFunction }: ChangePasswordFormProps): JSX.Element {
 	const { isLoading, token, userAuthenticated } = useAppSelector(state => state.user);
 
 	const dispatch = useAppDispatch();
@@ -56,7 +56,7 @@ export default function ChangePasswordForm({ visibleFunction }: ChangePasswordFo
 		})
 		.required();
 
-	const { control, formState, handleSubmit, reset } = useForm<FormData>({
+	const { control, formState, handleSubmit } = useForm<FormData>({
 		defaultValues,
 		resolver: yupResolver(schema)
 	});

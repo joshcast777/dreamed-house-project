@@ -1,6 +1,6 @@
 import Galleria from './Galleria.component';
 import HouseDetailFooter from "./HouseDetailFooter.component";
-import HouseFinishes from "./HouseFinishes.component";
-import HouseFinishDropdown from "./HouseFinishDropdown.component";
+import ProformaData from "./ProformaData.component";
+import ProformaDialog from "./ProformaDialog.component";
 
-export { Galleria as GalleriaComponent, HouseDetailFooter as HouseDetailFooterComponent, HouseFinishes as HouseFinishesComponent, HouseFinishDropdown as HouseFinishDropdownComponent };
+export { Galleria as GalleriaComponent, HouseDetailFooter as HouseDetailFooterComponent, ProformaData as ProformaDataComponent, ProformaDialog as ProformaDialogComponent };

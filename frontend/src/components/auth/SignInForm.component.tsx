@@ -20,7 +20,7 @@ import { FormButtonsComponent, HeaderAuthFormComponent } from ".";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { signIn } from "../../store/slices/user";
+import { signIn } from "../../store/slices/users";
 
 // Interfaces
 import { IAuthUser } from "../../interfaces";

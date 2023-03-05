@@ -1,3 +1,27 @@
+export interface DoorType {
+	doorTypeId: number;
+	name: string;
+	price: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export interface FaucetType {
+	faucetTypeId: number;
+	name: string;
+	price: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
+export interface FloorType {
+	floorTypeId: number;
+	name: string;
+	price: number;
+	createdAt: string;
+	updatedAt: string;
+}
+
 export interface House {
 	bathroomsNumber: number;
 	createdAt: string;
@@ -12,18 +36,10 @@ export interface House {
 }
 
 export interface HouseFeatures {
-	feature: JSX.Element;
-	icon: JSX.Element;
-	key: string;
-}
-
-export interface HouseFinish {
-	createdAt: string;
-	houseFinisheId: number;
-	name: string;
-	price: number;
-	typeFinish: string;
-	updatedAt: string;
+	bathroomsNumber: number;
+	floorsNumber: number;
+	squareMeters: number;
+	roomsNumber: number;
 }
 
 export interface HouseImage {

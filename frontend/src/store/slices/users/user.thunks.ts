@@ -8,7 +8,7 @@ import { changePasswordApi, deleteUserApi, getUserApi, signInApi, signUpApi, upd
 import { useFetch } from "../../../hooks";
 
 // Interfaces
-import { IAuthUser, ISignInResponse, IUpdateUser, IUser, IChangePassword, IUserData } from "../../../interfaces";
+import { IAuthUser, ISignInResponse, IUserToken, IUser, IChangePassword, IUserData } from "../../../interfaces";
 
 export const changePassword = createAsyncThunk("user/changePassword", async (data: IChangePassword): Promise<string> => await useFetch<string>((): Promise<Response> => changePasswordApi(data)));
 
@@ -20,4 +20,4 @@ export const signIn = createAsyncThunk("user/signIn", async (authUser: IAuthUser
 
 export const signUp = createAsyncThunk("user/signUp", async (user: IUser): Promise<string> => await useFetch<string>((): Promise<Response> => signUpApi(user)));
 
-export const updateUser = createAsyncThunk("user/update", async (data: IUpdateUser): Promise<string> => await useFetch<string>((): Promise<Response> => updateUserApi(data)));
+export const updateUser = createAsyncThunk("user/update", async (data: IUserToken): Promise<string> => await useFetch<string>((): Promise<Response> => updateUserApi(data)));

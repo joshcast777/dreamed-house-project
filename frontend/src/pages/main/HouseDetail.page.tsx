@@ -3,30 +3,23 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // PrimeReact
-import { PrimeButton, PrimeDivider, PrimeProgressSpinner } from "../../imports/prime-react";
-
-// React Icons
-import { FaBedIcon, FaBuildingIcon, FaHomeIcon, FaToiletIcon } from "../../imports/react-icons";
+import { PrimeDivider, PrimeProgressSpinner } from "../../imports/prime-react";
 
 // Shared Components
-import { FeaturesLayoutComponent, HeroImageComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
+import { FeaturesLayoutComponent, HeroImageComponent, HouseFinishesComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
 
 // Own Components
-import { GalleriaComponent, HouseDetailFooterComponent, HouseFinishesComponent } from "../../components/house_details";
+import { GalleriaComponent, HouseDetailFooterComponent } from "../../components/house_details";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { getHouseFinishes, removeHouseFinishes } from "../../store/slices/houseFinishes";
-import { getHouse, removeSelectedHouse, setSelectedHouse } from "../../store/slices/houses";
+import { getDoorTypes, getFaucetTypes, getFloorTypes, getHouse, removeDoorTypes, removeFaucetTypes, removeFloorTypes, removeSelectedDoorType, removeSelectedFaucetType, removeSelectedFloorType, removeSelectedHouse, setSelectedHouse } from "../../store/slices/houses";
 
 // Interfaces
-import { IHouseFeatures } from "../../interfaces";
-import { HouseFinish, HouseImage } from "../../interfaces/house.interface";
+import { IHouseFeatures, IHouseImage } from "../../interfaces";
 
 export default function HouseDetail(): JSX.Element {
-	const { requestMessage: errors, houses, selectedHouse, isLoading: isLoadingHouses } = useAppSelector(state => state.houses);
-
-	const { isLoading: isLoadingHouseFinishes, selectedHouseFinishes } = useAppSelector(state => state.houseFinishes);
+	const { selectedDoorType, selectedFaucetType, selectedFloorType, isLoading, houses, selectedHouse, requestMessage } = useAppSelector(state => state.houses);
 
 	const dispatch = useAppDispatch();
 
@@ -35,57 +28,36 @@ export default function HouseDetail(): JSX.Element {
 	const navigate = useNavigate();
 
 	useEffect((): (() => void) => {
-		if (houses.length === 0) dispatch(getHouse(pathname.substring(1).split("/").pop()!));
+		if (houses.length === 0) dispatch(getHouse(Number(pathname.substring(1).split("/").pop()!)));
 		else dispatch(setSelectedHouse(pathname.substring(1).split("/").pop()!));
 
-		dispatch(getHouseFinishes());
+		dispatch(getDoorTypes());
+		dispatch(getFaucetTypes());
+		dispatch(getFloorTypes());
 
-		if (errors) navigate("/not-found");
+		if (requestMessage) navigate("/not-found");
 
 		return (): void => {
-			dispatch(removeHouseFinishes());
+			dispatch(removeDoorTypes());
+			dispatch(removeFaucetTypes());
+			dispatch(removeFloorTypes());
 			dispatch(removeSelectedHouse());
+			dispatch(removeSelectedDoorType());
+			dispatch(removeSelectedFaucetType());
+			dispatch(removeSelectedFloorType());
 		};
-	}, [errors]);
+	}, [requestMessage]);
 
-	const featuresData: IHouseFeatures[] = [
-		{
-			key: "squareMeters",
-			feature: (
-				<>
-					{selectedHouse?.squareMeters!} m<sup>2</sup>
-				</>
-			),
-			icon: <FaHomeIcon className="text-primary-color inline-block m-0" />
-		},
-		{
-			key: "floorsNumber",
-			feature: (
-				<>
-					{selectedHouse?.floorsNumber!} {selectedHouse?.floorsNumber! >= 2 ? "pisos" : "piso"}
-				</>
-			),
-			icon: <FaBuildingIcon className="text-primary-color inline-block m-0" />
-		},
-		{
-			key: "roomsNumber",
-			feature: <>{selectedHouse?.roomsNumber!} cuartos</>,
-			icon: <FaBedIcon className="text-primary-color inline-block m-0" />
-		},
-		{
-			key: "bathroomsNumber",
-			feature: (
-				<>
-					{selectedHouse?.bathroomsNumber!} {selectedHouse?.bathroomsNumber! >= 2 ? "baños" : "baño"}
-				</>
-			),
-			icon: <FaToiletIcon className="text-primary-color inline-block m-0" />
-		}
-	];
+	const houseFeatures: IHouseFeatures = {
+		bathroomsNumber: selectedHouse?.bathroomsNumber!,
+		floorsNumber: selectedHouse?.floorsNumber!,
+		roomsNumber: selectedHouse?.roomsNumber!,
+		squareMeters: selectedHouse?.squareMeters!
+	};
 
-	const imageUrls: string[] = selectedHouse?.houseImages.map((houseImage: HouseImage): string => houseImage!.imageUrl)!;
+	const imageUrls: string[] = selectedHouse?.houseImages.map((houseImage: IHouseImage): string => houseImage!.imageUrl)!;
 
-	if (isLoadingHouses && isLoadingHouseFinishes)
+	if (isLoading)
 		return (
 			<div className="mt-10 flex justify-center">
 				<PrimeProgressSpinner />
@@ -106,11 +78,11 @@ export default function HouseDetail(): JSX.Element {
 				<PrimeDivider layout="vertical" className="hidden lg:block" />
 
 				<div>
-					<div className="md:flex md:justify-center md:gap-10 lg:flex-col lg:gap-1">
+					<div className="md:flex md:justify-center md:gap-10 md:flex-wrap lg:gap-1">
 						<div className="md:flex-1">
 							<TitleComponent title="Características" />
 
-							<FeaturesLayoutComponent houseFeatures={featuresData} className="md:grid-cols-1 lg:grid-cols-4" />
+							<FeaturesLayoutComponent houseFeatures={houseFeatures} className="2xs:grid-cols-2 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4" />
 						</div>
 
 						<PrimeDivider className="md:hidden lg:block" />
@@ -131,7 +103,7 @@ export default function HouseDetail(): JSX.Element {
 					<div className="mb-1 flex justify-between items-center">
 						<p className="text-lg font-bold">Total</p>
 
-						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedHouseFinishes.reduce((current: number, houseFinish: HouseFinish): number => current + houseFinish.price, 0)}</p>
+						<p className="text-lg font-semibold">$ {selectedHouse?.price! + selectedDoorType?.price! + selectedFaucetType?.price! + selectedFloorType?.price!}</p>
 					</div>
 
 					<PrimeDivider />

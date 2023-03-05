@@ -17,7 +17,7 @@ import { FormButtonsComponent, HeaderAuthFormComponent } from ".";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { signUp } from "../../store/slices/user";
+import { signUp } from "../../store/slices/users";
 
 // Interfaces
 import { IUser } from "../../interfaces";
@@ -89,8 +89,7 @@ export default function SignUpForm(): JSX.Element {
 		const userData: IUser = {
 			...data,
 			createdAt: new Date().toLocaleString(),
-			updatedAt: new Date().toLocaleString(),
-			roleId: 2
+			updatedAt: new Date().toLocaleString()
 		};
 
 		dispatch(signUp(userData));

@@ -11,19 +11,9 @@ export interface ChangePassword {
 	token: string;
 }
 
-export interface UserData {
-	token: string;
-	userId: number;
-}
-
 export interface SignInResponse {
 	token: string;
 	userAuthenticated: User;
-}
-
-export interface UpdateUser {
-	token: string;
-	user: User;
 }
 
 export interface User {
@@ -34,7 +24,16 @@ export interface User {
 	lastName: string;
 	password: string;
 	phoneNumber: string;
-	roleId: number;
 	updatedAt: string;
 	userId?: number;
+}
+
+export interface UserData {
+	token: string;
+	userId: number;
+}
+
+export interface UserToken {
+	token: string;
+	user: User;
 }

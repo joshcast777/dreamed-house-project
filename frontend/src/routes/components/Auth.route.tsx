@@ -10,7 +10,7 @@ import { SignInPage, SignUpPage } from "../../pages/auth";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { removeRequestMessage } from "../../store/slices/user";
+import { removeRequestMessage } from "../../store/slices/users";
 
 export default function Auth(): JSX.Element {
 	const { requestMessage } = useAppSelector(state => state.user);
@@ -33,6 +33,7 @@ export default function Auth(): JSX.Element {
 
 			<Routes>
 				<Route path="sign-in" element={<SignInPage />} />
+				<Route path="" element={<Navigate to="/auth/sign-in" />} />
 				<Route path="sign-up" element={<SignUpPage />} />
 
 				<Route path="*" element={<Navigate to="/not-found" />} />

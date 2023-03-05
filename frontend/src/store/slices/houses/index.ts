@@ -1,4 +1,4 @@
-import { house, removeHouses, removeRequestMessage, removeSelectedHouse, setHouses, setSelectedHouse, startLoadingHouses } from "./house.slice";
-import { getHouse, getHouses } from "./house.thunk";
+import { house, removeDoorTypes, removeFaucetTypes, removeFloorTypes, removeHouses, removeRequestMessage, removeSelectedDoorType, removeSelectedFloorType, removeSelectedFaucetType, removeSelectedHouse, setHouses, setSelectedDoorType, setSelectedFaucetType, setSelectedFloorType, setSelectedHouse, startLoadingHouses } from "./house.slice";
+import { getDoorTypes, getFaucetTypes, getFloorTypes, getHouse, getHouses } from "./house.thunk";
 
-export { getHouse, getHouses, house, removeHouses, removeRequestMessage, removeSelectedHouse, setHouses, setSelectedHouse, startLoadingHouses };
+export { getDoorTypes, getFaucetTypes, getFloorTypes, getHouse, getHouses, house, removeDoorTypes, removeFaucetTypes, removeFloorTypes, removeHouses, removeRequestMessage, removeSelectedDoorType, removeSelectedFloorType, removeSelectedFaucetType, removeSelectedHouse, setSelectedDoorType, setSelectedFaucetType, setSelectedFloorType, setHouses, setSelectedHouse, startLoadingHouses };

@@ -1,6 +1,6 @@
 // Own React
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // PrimeReact
 import { PrimeButton, primeConfirmDialog, PrimeConfirmDialog, PrimeDialog, PrimeToast } from "../../imports/prime-react";
@@ -13,7 +13,7 @@ import { ChangePasswordFormComponent, EditFormComponent, UserDataComponent, User
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { deleteUser, getUser, removeRequestMessage } from "../../store/slices/user";
+import { deleteUser, getUser, removeRequestMessage } from "../../store/slices/users";
 
 // Own Interfaces
 interface UserData {
@@ -57,6 +57,10 @@ export default function User(): JSX.Element {
 		};
 	}, [requestMessage]);
 
+	const optionDataTitleClassName = (className: string = " "): string => `text-xl font-semibold${" " + className + " "}mb-3 xs:mb-0 md:mb-3 lg:mb-0 xl:mb-0`;
+
+	const optionDataButtonClassName = (): string => "w-full xs:w-1/3 md:w-full lg:w-1/2";
+
 	const accept = (): void => {
 		dispatch(deleteUser({ token, userId: userAuthenticated?.userId! }));
 
@@ -84,18 +88,22 @@ export default function User(): JSX.Element {
 	const optionsData: OptionData[] = [
 		{
 			className: "border-warning-color",
-			title: <h2 className="text-xl font-semibold text-warning-color mb-3 xs:mb-0 md:mb-3 xl:mb-0">Contraseña</h2>,
-			button: <PrimeButton label="Cambiar" className="p-button-warning button background-color-transition w-full xs:w-1/3 md:w-full lg:w-1/2" onClick={(): void => setChangePassword(true)} />
+			title: <h2 className={optionDataTitleClassName("text-warning-color")}>Contraseña</h2>,
+			button: <PrimeButton label="Cambiar" className={`p-button-warning button background-color-transition ${optionDataButtonClassName()}`} onClick={(): void => setChangePassword(true)} />
 		},
 		{
 			className: "border-danger-color",
-			title: <h2 className="text-xl font-semibold text-danger-color mb-3 xs:mb-0 md:mb-3 xl:mb-0">Eliminar</h2>,
-			button: <PrimeButton label="Eliminar" className="p-button-danger button background-color-transition w-full xs:w-1/3 md:w-full lg:w-1/2" onClick={deleteAccount} />
+			title: <h2 className={optionDataTitleClassName("text-danger-color")}>Eliminar</h2>,
+			button: <PrimeButton label="Eliminar" className={`p-button-danger button background-color-transition ${optionDataButtonClassName()}`} onClick={deleteAccount} />
 		},
 		{
 			className: "border-gray-500",
-			title: <h2 className="text-xl font-semibold mb-3 xs:mb-0 md:mb-3 xl:mb-0">Proformas</h2>,
-			button: <PrimeButton label="Ver todas" className="p-button-secondary button background-color-transition w-full xs:w-1/3 md:w-full lg:w-1/2" />
+			title: <h2 className={optionDataTitleClassName()}>Proformas</h2>,
+			button: (
+				<Link to="/user/proformas" className={optionDataButtonClassName()}>
+					<PrimeButton label="Ver todas" className="p-button-secondary button background-color-transition w-full" />
+				</Link>
+			)
 		}
 	];
 

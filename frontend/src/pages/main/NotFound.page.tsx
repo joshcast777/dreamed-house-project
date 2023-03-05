@@ -8,7 +8,7 @@ import { PrimeButton } from "../../imports/prime-react";
 // Store
 import { useAppDispatch } from "../../store";
 import { removeRequestMessage as removeHouseErrors } from "../../store/slices/houses";
-import { removeRequestMessage as removeUserErrors } from "../../store/slices/user";
+import { removeRequestMessage as removeUserErrors } from "../../store/slices/users";
 
 export default function NotFound(): JSX.Element {
 	const dispatch = useAppDispatch();

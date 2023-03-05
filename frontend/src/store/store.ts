@@ -2,14 +2,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Slices
-import { user } from "./slices/user";
-import { houseFinish } from "./slices/houseFinishes";
+import { user } from "./slices/users";
 import { house } from "./slices/houses";
+import { proforma } from "./slices/proformas";
 
 export const store = configureStore({
 	reducer: {
 		houses: house.reducer,
-		houseFinishes: houseFinish.reducer,
+		proforma: proforma.reducer,
 		user: user.reducer
 	}
 });

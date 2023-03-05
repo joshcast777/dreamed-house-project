@@ -14,7 +14,7 @@ import * as yup from "yup";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { updateUser } from "../../store/slices/user";
+import { updateUser } from "../../store/slices/users";
 
 // Interfaces
 import { IUser } from "../../interfaces";
@@ -33,7 +33,7 @@ interface FormData {
 }
 
 export default function EditForm({ visibleFunction }: EditFormProps): JSX.Element {
-	const { isLoading, requestMessage, token, userAuthenticated } = useAppSelector(state => state.user);
+	const { isLoading, token, userAuthenticated } = useAppSelector(state => state.user);
 
 	const dispatch = useAppDispatch();
 
@@ -58,7 +58,7 @@ export default function EditForm({ visibleFunction }: EditFormProps): JSX.Elemen
 		})
 		.required();
 
-	const { control, formState, handleSubmit, reset } = useForm<FormData>({
+	const { control, formState, handleSubmit } = useForm<FormData>({
 		defaultValues: { ...userAuthenticated },
 		resolver: yupResolver(schema)
 	});

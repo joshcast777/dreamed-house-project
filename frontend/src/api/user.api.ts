@@ -2,7 +2,7 @@
 import { fetchUrlHelper } from "../helpers";
 
 // Interfaces
-import { IAuthUser, IChangePassword, IUpdateUser, IUser, IUserData } from "../interfaces";
+import { IAuthUser, IChangePassword, IUserToken, IUser, IUserData } from "../interfaces";
 
 // Global Consts
 const userAuthEndPoint: string = "AuthUser";
@@ -59,7 +59,7 @@ export async function signUp(user: IUser): Promise<Response> {
 	});
 }
 
-export async function updateUser({ token, user }: IUpdateUser): Promise<Response> {
+export async function updateUser({ token, user }: IUserToken): Promise<Response> {
 	return await fetch(`${fetchUrlHelper()}/${userEndPoint}/${user.userId}`, {
 		method: "PUT",
 		body: JSON.stringify(user),
