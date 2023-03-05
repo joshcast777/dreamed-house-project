@@ -30,13 +30,9 @@ namespace DreamedHouse.Controllers
 			var user = await _context.Users.FirstOrDefaultAsync(user => user.Email == authUser.Email && user.Password == authUser.Password);
 
 			if (user == null)
-				return BadRequest("Correo o contraseña inexistentes");
+				return BadRequest("Combinación no encontrada");
 			else
-				return Ok(new
-				{
-					token = GenerateToken(user),
-					userAuthenticated = user
-				});
+				return Ok(new { token = GenerateToken(user), userAuthenticated = user });
 		}
 
 		// POST: api/AuthUser/SingUp
@@ -45,21 +41,11 @@ namespace DreamedHouse.Controllers
 		public async Task<ActionResult<User>> PostUser(User user)
 		{
 			if (_context.Users == null)
-				return Problem("Entity set 'AppDbContext.Users' is null.");
+				return Problem("La entidad 'Usuarios' no existe");
 
-			if (user.Email.Substring(user.Email.IndexOf("@") + 1) == "dreamedhouse.com")
-				return BadRequest("Correo inválido");
+			if (UserDniExists(user.Dni) || UserPhoneNumberExists(user.PhoneNumber) || UserEmailExists(user.Email))
+				return BadRequest("Cédula, número de celular o correo electrónico ya registrados");
 
-			if (UserDniDuplicated(user.Dni))
-				return BadRequest("Cédula, celular o correo ya existentes");
-
-			if (UserPhoneNumberDuplicated(user.PhoneNumber))
-				return BadRequest("Cédula, celular o correo ya existentes");
-
-			if (UserEmailDuplicated(user.Email))
-				return BadRequest("Cédula, celular o correo ya existentes");
-
-			user.RoleId = 2;
 			user.CreatedAt = DateTime.Now;
 			user.UpdatedAt = DateTime.Now;
 
@@ -91,17 +77,17 @@ namespace DreamedHouse.Controllers
 			return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
 		}
 
-		private bool UserDniDuplicated(string userDni)
+		private bool UserDniExists(string userDni)
 		{
 			return (_context.Users?.Any(user => user.Dni == userDni)).GetValueOrDefault();
 		}
 
-		private bool UserPhoneNumberDuplicated(string userPhoneNumber)
+		private bool UserPhoneNumberExists(string userPhoneNumber)
 		{
 			return (_context.Users?.Any(user => user.PhoneNumber == userPhoneNumber)).GetValueOrDefault();
 		}
 
-		private bool UserEmailDuplicated(string userEmail)
+		private bool UserEmailExists(string userEmail)
 		{
 			return (_context.Users?.Any(user => user.Email == userEmail)).GetValueOrDefault();
 		}

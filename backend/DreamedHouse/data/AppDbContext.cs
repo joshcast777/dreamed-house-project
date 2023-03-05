@@ -5,13 +5,17 @@ namespace DreamedHouse.Data;
 
 public partial class AppDbContext : DbContext
 {
-	public virtual DbSet<House> Houses { get; set; } = null!;
+	public virtual DbSet<DoorType> DoorTypes { get; set; } = null!;
 
-	public virtual DbSet<HouseFinish> HouseFinishes { get; set; } = null!;
+	public virtual DbSet<FaucetType> FaucetTypes { get; set; } = null!;
+
+	public virtual DbSet<FloorType> FloorTypes { get; set; } = null!;
+
+	public virtual DbSet<House> Houses { get; set; } = null!;
 
 	public virtual DbSet<HouseImage> HouseImages { get; set; } = null!;
 
-	public virtual DbSet<Role> Roles { get; set; } = null!;
+	public virtual DbSet<Proforma> Proformas { get; set; } = null!;
 
 	public virtual DbSet<User> Users { get; set; } = null!;
 
@@ -23,12 +27,106 @@ public partial class AppDbContext : DbContext
 			.UseCollation("utf8_general_ci")
 			.HasCharSet("utf8");
 
+		modelBuilder.Entity<DoorType>(entity =>
+		{
+			entity.HasKey(doorType => doorType.DoorTypeId)
+				.HasName("PRIMARY");
+
+			entity.ToTable("door_types");
+
+			entity.Property(doorType => doorType.DoorTypeId)
+				.HasColumnType("int(11)")
+				.HasColumnName("door_type_id");
+
+			entity.Property(doorType => doorType.CreatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("created_at");
+
+			entity.Property(doorType => doorType.Name)
+				.HasMaxLength(50)
+				.HasColumnName("name");
+
+			entity.Property(doorType => doorType.Price)
+				.HasColumnType("double(5,2)")
+				.HasColumnName("price");
+
+			entity.Property(doorType => doorType.UpdatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("updated_at");
+		});
+
+		modelBuilder.Entity<FaucetType>(entity =>
+		{
+			entity.HasKey(faucetType => faucetType.FaucetTypeId)
+				.HasName("PRIMARY");
+
+			entity.ToTable("faucet_types");
+
+			entity.Property(faucetType => faucetType.FaucetTypeId)
+				.HasColumnType("int(11)")
+				.HasColumnName("faucet_type_id");
+
+			entity.Property(faucetType => faucetType.CreatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("created_at");
+
+			entity.Property(faucetType => faucetType.Name)
+				.HasMaxLength(50)
+				.HasColumnName("name");
+
+			entity.Property(faucetType => faucetType.Price)
+				.HasColumnType("double(5,2)")
+				.HasColumnName("price");
+
+			entity.Property(faucetType => faucetType.UpdatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("updated_at");
+		});
+
+		modelBuilder.Entity<FloorType>(entity =>
+		{
+			entity.HasKey(floorType => floorType.FloorTypeId)
+				.HasName("PRIMARY");
+
+			entity.ToTable("floor_types");
+
+			entity.Property(floorType => floorType.FloorTypeId)
+				.HasColumnType("int(11)")
+				.HasColumnName("floor_type_id");
+
+			entity.Property(floorType => floorType.CreatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("created_at");
+
+			entity.Property(floorType => floorType.Name)
+				.HasMaxLength(50)
+				.HasColumnName("name");
+
+			entity.Property(floorType => floorType.Price)
+				.HasColumnType("double(5,2)")
+				.HasColumnName("price");
+
+			entity.Property(floorType => floorType.UpdatedAt)
+				.HasDefaultValueSql("CURRENT_TIMESTAMP")
+				.HasColumnType("timestamp")
+				.HasColumnName("updated_at");
+		});
+
 		modelBuilder.Entity<House>(entity =>
 		{
 			entity.HasKey(house => house.HouseId)
 				.HasName("PRIMARY");
 
 			entity.ToTable("houses");
+
+			entity.Property(house => house.HouseId)
+				.HasColumnType("int(11)")
+				.HasColumnName("house_id");
 
 			entity.Property(house => house.BathroomsNumber)
 				.HasColumnType("int(11)")
@@ -42,10 +140,6 @@ public partial class AppDbContext : DbContext
 			entity.Property(house => house.FloorsNumber)
 				.HasColumnType("int(11)")
 				.HasColumnName("floors_number");
-
-			entity.Property(house => house.HouseId)
-				.HasColumnType("int(11)")
-				.HasColumnName("house_id");
 
 			entity.Property(house => house.Name)
 				.HasMaxLength(100)
@@ -69,40 +163,6 @@ public partial class AppDbContext : DbContext
 				.HasColumnName("updated_at");
 		});
 
-		modelBuilder.Entity<HouseFinish>(entity =>
-		{
-			entity.HasKey(houseFinish => houseFinish.HouseFinisheId)
-				.HasName("PRIMARY");
-
-			entity.ToTable("house_finishes");
-
-			entity.Property(houseFinish => houseFinish.CreatedAt)
-				.HasDefaultValueSql("CURRENT_TIMESTAMP")
-				.HasColumnType("timestamp")
-				.HasColumnName("created_at");
-
-			entity.Property(houseFinish => houseFinish.HouseFinisheId)
-				.HasColumnType("int(11)")
-				.HasColumnName("house_finishe_id");
-
-			entity.Property(houseFinish => houseFinish.Name)
-				.HasMaxLength(100)
-				.HasColumnName("name");
-
-			entity.Property(houseFinish => houseFinish.Price)
-				.HasColumnType("double(10,2)")
-				.HasColumnName("price");
-
-			entity.Property(houseFinish => houseFinish.TypeFinish)
-				.HasMaxLength(30)
-				.HasColumnName("type_finish");
-
-			entity.Property(houseFinish => houseFinish.UpdatedAt)
-				.HasDefaultValueSql("CURRENT_TIMESTAMP")
-				.HasColumnType("timestamp")
-				.HasColumnName("updated_at");
-		});
-
 		modelBuilder.Entity<HouseImage>(entity =>
 		{
 			entity.HasKey(houseImage => houseImage.ImageId)
@@ -112,23 +172,18 @@ public partial class AppDbContext : DbContext
 
 			entity.HasIndex(houseImage => houseImage.HouseId, "fk_house_images_houses");
 
+			entity.Property(houseImage => houseImage.ImageId)
+				.HasColumnType("int(11)")
+				.HasColumnName("image_id");
+
 			entity.Property(houseImage => houseImage.CreatedAt)
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
 				.HasColumnType("timestamp")
 				.HasColumnName("created_at");
 
-			entity.HasOne(houseImage => houseImage.House)
-				.WithMany(house => house.HouseImages)
-				.HasForeignKey(houseImage => houseImage.HouseId)
-				.HasConstraintName("fk_house_images_houses");
-
 			entity.Property(houseImage => houseImage.HouseId)
 				.HasColumnType("int(11)")
 				.HasColumnName("house_id");
-
-			entity.Property(houseImage => houseImage.ImageId)
-				.HasColumnType("int(11)")
-				.HasColumnName("image_id");
 
 			entity.Property(houseImage => houseImage.ImageUrl)
 				.HasMaxLength(255)
@@ -138,37 +193,98 @@ public partial class AppDbContext : DbContext
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
 				.HasColumnType("timestamp")
 				.HasColumnName("updated_at");
+
+			entity.HasOne(houseImage => houseImage.House)
+				.WithMany(house => house.HouseImages)
+				.HasForeignKey(houseImage => houseImage.HouseId)
+				.HasConstraintName("fk_house_images_houses");
 		});
 
-		modelBuilder.Entity<Role>(entity =>
+		modelBuilder.Entity<Proforma>(entity =>
 		{
-			entity.HasKey(role => role.RoleId)
+			entity.HasKey(proforma => proforma.ProformaId)
 				.HasName("PRIMARY");
 
-			entity.ToTable("roles");
+			entity.ToTable("proformas");
 
-			entity.Property(role => role.CreatedAt)
+			entity.HasIndex(proforma => proforma.DoorTypeId, "fk_proformas_door_types");
+
+			entity.HasIndex(proforma => proforma.FaucetTypeId, "fk_proformas_faucet_types");
+
+			entity.HasIndex(proforma => proforma.FloorTypeId, "fk_proformas_floor_types");
+
+			entity.HasIndex(proforma => proforma.HouseId, "fk_proformas_house");
+
+			entity.HasIndex(proforma => proforma.UserId, "fk_proformas_user");
+
+			entity.Property(proforma => proforma.ProformaId)
+				.HasColumnType("int(11)")
+				.HasColumnName("proforma_id");
+
+			entity.Property(proforma => proforma.CreatedAt)
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
 				.HasColumnType("timestamp")
 				.HasColumnName("created_at");
 
-			entity.Property(role => role.Name)
-				.HasMaxLength(100)
-				.HasColumnName("name");
-
-			entity.Property(role => role.RoleId)
+			entity.Property(proforma => proforma.DoorTypeId)
 				.HasColumnType("int(11)")
-				.HasColumnName("role_id");
+				.HasColumnName("door_type_id");
 
-			entity.Property(role => role.UpdatedAt)
+			entity.Property(proforma => proforma.FaucetTypeId)
+				.HasColumnType("int(11)")
+				.HasColumnName("faucet_type_id");
+
+			entity.Property(proforma => proforma.FloorTypeId)
+				.HasColumnType("int(11)")
+				.HasColumnName("floor_type_id");
+
+			entity.Property(proforma => proforma.HouseId)
+				.HasColumnType("int(11)")
+				.HasColumnName("house_id");
+
+			entity.Property(proforma => proforma.UpdatedAt)
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
 				.HasColumnType("timestamp")
 				.HasColumnName("updated_at");
+
+			entity.Property(proforma => proforma.UserId)
+				.HasColumnType("int(11)")
+				.HasColumnName("user_id");
+
+			entity.HasOne(proforma => proforma.DoorType)
+				.WithMany()
+				.HasForeignKey(proforma => proforma.DoorTypeId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_proformas_door_types");
+
+			entity.HasOne(proforma => proforma.FaucetType)
+				.WithMany()
+				.HasForeignKey(proforma => proforma.FaucetTypeId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_proformas_faucet_types");
+
+			entity.HasOne(proforma => proforma.FloorType)
+				.WithMany()
+				.HasForeignKey(proforma => proforma.FloorTypeId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_proformas_floor_types");
+
+			entity.HasOne(proforma => proforma.House)
+				.WithMany()
+				.HasForeignKey(proforma => proforma.HouseId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_proformas_house");
+
+			entity.HasOne(proforma => proforma.User)
+				.WithMany()
+				.HasForeignKey(proforma => proforma.UserId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_proformas_user");
 		});
 
 		modelBuilder.Entity<User>(entity =>
 		{
-			entity.HasKey(user => user.UserId)
+			entity.HasKey(e => e.UserId)
 				.HasName("PRIMARY");
 
 			entity.ToTable("users");
@@ -181,6 +297,10 @@ public partial class AppDbContext : DbContext
 
 			entity.HasIndex(user => user.PhoneNumber, "phone_number")
 				.IsUnique();
+
+			entity.Property(user => user.UserId)
+				.HasColumnType("int(11)")
+				.HasColumnName("user_id");
 
 			entity.Property(user => user.CreatedAt)
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
@@ -211,18 +331,10 @@ public partial class AppDbContext : DbContext
 				.HasMaxLength(10)
 				.HasColumnName("phone_number");
 
-			entity.Property(user => user.RoleId)
-				.HasColumnType("int(11)")
-				.HasColumnName("role_id");
-
 			entity.Property(user => user.UpdatedAt)
 				.HasDefaultValueSql("CURRENT_TIMESTAMP")
 				.HasColumnType("timestamp")
 				.HasColumnName("updated_at");
-
-			entity.Property(user => user.UserId)
-				.HasColumnType("int(11)")
-				.HasColumnName("user_id");
 		});
 
 		OnModelCreatingPartial(modelBuilder);

@@ -2,14 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DreamedHouse.Data;
 using DreamedHouse.Models;
-using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 
 namespace DreamedHouse.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize]
 	public class UserController : ControllerBase
 	{
 		private readonly AppDbContext _context;
@@ -19,27 +17,17 @@ namespace DreamedHouse.Controllers
 			_context = context;
 		}
 
-		// GET: api/User
-		// [HttpGet]
-		// public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-		// {
-		// 	if (_context.Users == null)
-		// 		return NotFound();
-
-		// 	return await _context.Users.ToListAsync();
-		// }
-
 		// GET: api/User/5
 		[HttpGet("{userId}")]
 		public async Task<ActionResult<User>> GetUser(int userId)
 		{
 			if (_context.Users == null)
-				return NotFound();
+				return NotFound("No se encontraron usuarios registrados");
 
 			var user = await _context.Users.FindAsync(userId);
 
 			if (user == null)
-				return NotFound();
+				return NotFound("Usuario no registrado");
 
 			return user;
 		}
@@ -50,16 +38,12 @@ namespace DreamedHouse.Controllers
 		public async Task<IActionResult> PutUser(int userId, User user)
 		{
 			if (userId != user.UserId)
-				return BadRequest();
+				return BadRequest("El usuario no coincide con el ID");
 
-			if (user.Email.Substring(user.Email.IndexOf("@") + 1) == "dreamedhouse.com")
-				return BadRequest("Correo inválido.");
+			if (UserPhoneNumberExists(user.UserId, user.PhoneNumber) || UserEmailExists(user.UserId, user.Email))
+				return BadRequest("Cédula, número de celular o correo electrónico ya registrados");
 
-			if (UserPhoneNumberDuplicated(user.UserId, user.PhoneNumber))
-				return BadRequest("Número de celular ya existente.");
-
-			if (UserEmailDuplicated(user.UserId, user.Email))
-				return BadRequest("Correo ya existente.");
+			user.UpdatedAt = DateTime.Now;
 
 			_context.Entry(user).State = EntityState.Modified;
 
@@ -70,7 +54,7 @@ namespace DreamedHouse.Controllers
 			catch (DbUpdateConcurrencyException)
 			{
 				if (!UserExists(userId))
-					return NotFound();
+					return NotFound("Usuario no encontrado");
 				else
 					throw;
 			}
@@ -84,7 +68,7 @@ namespace DreamedHouse.Controllers
 		public async Task<IActionResult> PutUserPassword(int userId, ChangePassword data)
 		{
 			if (userId != data.User.UserId)
-				return BadRequest();
+				return BadRequest("El usuario no coincide con el ID");
 
 			if (!ValidateUserPassword(userId, data.User.Password))
 				return BadRequest("Contraseña actual no coincide");
@@ -101,7 +85,7 @@ namespace DreamedHouse.Controllers
 			catch (DbUpdateConcurrencyException)
 			{
 				if (!UserExists(userId))
-					return NotFound();
+					return NotFound("Usuario no encontrado");
 				else
 					throw;
 			}
@@ -114,12 +98,12 @@ namespace DreamedHouse.Controllers
 		public async Task<IActionResult> DeleteUser(int userId)
 		{
 			if (_context.Users == null)
-				return NotFound();
+				return NotFound("No se encontraron usuarios registrados");
 
 			var user = await _context.Users.FindAsync(userId);
 
 			if (user == null)
-				return NotFound();
+				return NotFound("Usuario no encontrado");
 
 			_context.Users.Remove(user);
 			await _context.SaveChangesAsync();
@@ -129,15 +113,15 @@ namespace DreamedHouse.Controllers
 
 		private bool UserExists(int userId)
 		{
-			return (_context.Users?.Any(user => user.UserId == userId)).GetValueOrDefault();
+			return (_context.Users?.Any(e => e.UserId == userId)).GetValueOrDefault();
 		}
 
-		private bool UserPhoneNumberDuplicated(int userId, string userPhoneNumber)
+		private bool UserPhoneNumberExists(int userId, string userPhoneNumber)
 		{
 			return (_context.Users?.Any(user => user.PhoneNumber == userPhoneNumber && user.UserId != userId)).GetValueOrDefault();
 		}
 
-		private bool UserEmailDuplicated(int userId, string userEmail)
+		private bool UserEmailExists(int userId, string userEmail)
 		{
 			return (_context.Users?.Any(user => user.Email == userEmail && user.UserId != userId)).GetValueOrDefault();
 		}
