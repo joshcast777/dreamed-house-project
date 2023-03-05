@@ -20,18 +20,76 @@ import { updateUser } from "../../store/slices/users";
 import { IUser } from "../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 23:27:31
+ *
+ * @interface EditFormProps
+ * @typedef {EditFormProps}
+ */
 interface EditFormProps {
+	/**
+	 * Function to make visible the dialog component or not
+	 * @date 4/3/2023 - 23:27:31
+	 *
+	 * @type {Dispatch<SetStateAction<boolean>>}
+	 */
 	visibleFunction: Dispatch<SetStateAction<boolean>>;
 }
 
+/**
+ * Description placeholder
+* Interface to use into functional component* @date 4/3/2023 - 23:27:31
+ *
+ * @interface FormData
+ * @typedef {FormData}
+ */
 interface FormData {
+	/**
+	 * User DNI
+	 * @date 4/3/2023 - 23:27:31
+	 *
+	 * @type {string}
+	 */
 	dni: string;
+	/**
+	 * User First Name
+	 * @date 4/3/2023 - 23:27:31
+	 *
+	 * @type {string}
+	 */
 	firstName: string;
+	/**
+	 * User Last Name
+	 * @date 4/3/2023 - 23:27:31
+	 *
+	 * @type {string}
+	 */
 	lastName: string;
+	/**
+	 * User Phone Number
+	 * @date 4/3/2023 - 23:27:31
+	 *
+	 * @type {string}
+	 */
 	phoneNumber: string;
+	/**
+	 * User Email
+	 * @date 4/3/2023 - 23:27:30
+	 *
+	 * @type {string}
+	 */
 	email: string;
 }
 
+/**
+ * Component to display a form to edit the User data
+ * @date 4/3/2023 - 23:27:30
+ *
+ * @export
+ * @param {EditFormProps} { visibleFunction }
+ * @returns {JSX.Element}
+ */
 export default function EditForm({ visibleFunction }: EditFormProps): JSX.Element {
 	const { isLoading, token, userAuthenticated } = useAppSelector(state => state.user);
 

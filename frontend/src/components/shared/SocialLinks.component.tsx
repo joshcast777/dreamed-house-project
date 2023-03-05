@@ -2,11 +2,37 @@
 import { BsFacebookIcon, BsInstagramIcon, BsTwitterIcon } from "../../imports/react-icons";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 23:23:19
+ *
+ * @interface SocialLinkProps
+ * @typedef {SocialLinkProps}
+ */
 interface SocialLinkProps {
+	/**
+	 * Path link for every social icon
+	 * @date 4/3/2023 - 23:23:19
+	 *
+	 * @type {string}
+	 */
 	link: string;
+	/**
+	 * Icon to represent every social media
+	 * @date 4/3/2023 - 23:23:19
+	 *
+	 * @type {JSX.Element}
+	 */
 	icon: JSX.Element;
 }
 
+/**
+ * Component to display links for every social media
+ * @date 4/3/2023 - 23:23:19
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function SocialLinks(): JSX.Element {
 	const socialLinks: SocialLinkProps[] = [
 		{

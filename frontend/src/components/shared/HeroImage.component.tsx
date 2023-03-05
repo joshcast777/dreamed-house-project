@@ -4,6 +4,14 @@ import { cloudinaryUrlHelper } from "../../helpers";
 // Interfaces
 import { IHeroImage } from "../../interfaces";
 
+/**
+ * Component to display a Hero Image
+ * @date 4/3/2023 - 23:00:29
+ *
+ * @export
+ * @param {IHeroImage} { imageSrc, text = "Title" }
+ * @returns {JSX.Element}
+ */
 export default function HeroImage({ imageSrc, text = "Title" }: IHeroImage): JSX.Element {
 	return (
 		<div className="relative mb-10">

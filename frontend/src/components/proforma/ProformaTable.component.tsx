@@ -15,6 +15,13 @@ import { deleteProforma, removeRequestMessage, setSelectedProforma } from "../..
 // Interfaces
 import { IProforma } from "../../interfaces";
 
+/**
+ * Component to display a table with all user proformas
+ * @date 4/3/2023 - 22:46:56
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function ProformaTable(): JSX.Element {
 	const { proformas, requestMessage } = useAppSelector(state => state.proforma);
 	const { token } = useAppSelector(state => state.user);

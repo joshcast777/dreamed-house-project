@@ -23,16 +23,65 @@ import { signUp } from "../../store/slices/users";
 import { IUser } from "../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:29:30
+ *
+ * @interface FormData
+ * @typedef {FormData}
+ */
 interface FormData {
+	/**
+	 * User DNI
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	dni: string;
+	/**
+	 * User First Name
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	firstName: string;
+	/**
+	 * User Last Name
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	lastName: string;
+	/**
+	 * User Phone Number
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	phoneNumber: string;
+	/**
+	 * User Email
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	email: string;
+	/**
+	 * User Password
+	 * @date 4/3/2023 - 22:29:30
+	 *
+	 * @type {string}
+	 */
 	password: string;
 }
 
 // Global Consts
+/**
+ * Default values for the form
+ * @date 4/3/2023 - 22:29:30
+ *
+ * @type {FormData}
+ */
 const defaultValues: FormData = {
 	dni: "",
 	firstName: "",
@@ -42,6 +91,13 @@ const defaultValues: FormData = {
 	password: ""
 };
 
+/**
+ * Component to display a SingUp Form
+ * @date 4/3/2023 - 22:29:30
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function SignUpForm(): JSX.Element {
 	const inputTextClasses = (error: FieldError): string => `input input-text border-transition ${error ? "border-danger-color" : ""}`;
 

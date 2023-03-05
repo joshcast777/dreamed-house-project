@@ -11,6 +11,13 @@ import { ProformaDataComponent } from ".";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { createProforma } from "../../store/slices/proformas";
 
+/**
+ * Dialog to display Proforma Data
+ * @date 4/3/2023 - 22:45:30
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function ProformaDialog(): JSX.Element {
 	const { isLoading } = useAppSelector(state => state.proforma);
 	const { selectedDoorType, selectedFaucetType, selectedFloorType, selectedHouse } = useAppSelector(state => state.houses);
@@ -49,59 +56,73 @@ export default function ProformaDialog(): JSX.Element {
 			<LogoLinkComponent className="mb-3" />
 
 			<PrimeFieldset legend="Usuario" className="mb-3">
-				<ProformaDataComponent title="Cédula:" content={userAuthenticated?.dni!} className="mb-3" />
+				<ProformaDataComponent title="Cédula:" className="mb-3">
+					<p>{userAuthenticated?.dni!}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title="Nombre:" content={userAuthenticated?.firstName!} className="mb-3" />
+				<ProformaDataComponent title="Nombre:" className="mb-3">
+					<p>{userAuthenticated?.firstName!}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title="Apellido:" content={userAuthenticated?.lastName!} />
+				<ProformaDataComponent title="Apellido:">
+					<p>{userAuthenticated?.lastName!}</p>
+				</ProformaDataComponent>
 			</PrimeFieldset>
 
 			<PrimeFieldset legend="Casa">
-				<ProformaDataComponent title="Casa:" content={selectedHouse?.name!} className="mb-3" />
+				<ProformaDataComponent title="Casa:" className="mb-3">
+					<p>{selectedHouse?.name!}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title="Precio:" content={selectedHouse?.price!} className="mb-3" />
+				<ProformaDataComponent title="Precio:" className="mb-3">
+					<p>{selectedHouse?.price!}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent
-					title="Características:"
-					content={
-						<>
-							<div className="mb-2">
-								<h4 className="font-medium">Metros cuadrados:</h4>
+				<ProformaDataComponent title="Características:" className="mb-3">
+					<>
+						<div className="mb-2">
+							<h4 className="font-medium">Metros cuadrados:</h4>
 
-								<p>
-									{selectedHouse?.squareMeters} m<sup>2</sup>
-								</p>
-							</div>
+							<p>
+								{selectedHouse?.squareMeters} m<sup>2</sup>
+							</p>
+						</div>
 
-							<div className="mb-2">
-								<h4 className="font-medium">Pisos:</h4>
+						<div className="mb-2">
+							<h4 className="font-medium">Pisos:</h4>
 
-								<p>{selectedHouse?.floorsNumber} pisos</p>
-							</div>
+							<p>{selectedHouse?.floorsNumber} pisos</p>
+						</div>
 
-							<div className="mb-2">
-								<h4 className="font-medium">Cuartos:</h4>
+						<div className="mb-2">
+							<h4 className="font-medium">Cuartos:</h4>
 
-								<p>{selectedHouse?.roomsNumber}</p>
-							</div>
+							<p>{selectedHouse?.roomsNumber}</p>
+						</div>
 
-							<div>
-								<h4 className="font-medium">Baños:</h4>
+						<div>
+							<h4 className="font-medium">Baños:</h4>
 
-								<p>{selectedHouse?.bathroomsNumber}</p>
-							</div>
-						</>
-					}
-					className="mb-3"
-				/>
+							<p>{selectedHouse?.bathroomsNumber}</p>
+						</div>
+					</>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title={selectedFloorType?.name!} content={`$ ${selectedFloorType?.price}`} className="mb-3" />
+				<ProformaDataComponent title={selectedFloorType?.name!} className="mb-3">
+					<p>$ {selectedFloorType?.price}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title={selectedFaucetType?.name!} content={`$ ${selectedFaucetType?.price}`} className="mb-3" />
+				<ProformaDataComponent title={selectedFaucetType?.name!} className="mb-3">
+					<p>$ {selectedFaucetType?.price}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title={selectedDoorType?.name!} content={`$ ${selectedDoorType?.price}`} className="mb-3" />
+				<ProformaDataComponent title={selectedDoorType?.name!} className="mb-3">
+					<p>$ {selectedDoorType?.price}</p>
+				</ProformaDataComponent>
 
-				<ProformaDataComponent title="Total:" content={<p className="font-semibold text-xl">$ {selectedHouse?.price! + selectedDoorType?.price! + selectedFaucetType?.price! + selectedFloorType?.price!}</p>} className="mb-3" />
+				<ProformaDataComponent title="Total:" className="mb-3">
+					<p className="font-semibold text-xl">$ {selectedHouse?.price! + selectedDoorType?.price! + selectedFaucetType?.price! + selectedFloorType?.price!}</p>
+				</ProformaDataComponent>
 			</PrimeFieldset>
 		</div>
 	);

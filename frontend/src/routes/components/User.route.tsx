@@ -10,6 +10,13 @@ import { UserPage } from "../../pages/user";
 // Routes
 import { ProformaRoutes } from ".";
 
+/**
+ * Componen to set the User Routes
+ * @date 5/3/2023 - 0:16:14
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function User(): JSX.Element {
 	return (
 		<PageLayoutComponent>

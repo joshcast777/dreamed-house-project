@@ -10,20 +10,93 @@ import { IDoorType, IFaucetType, IFloorType, IHouse } from "../../../interfaces"
 import { getDoorTypes, getFloorTypes } from "./house.thunk";
 
 // Own Interfaces
+/**
+ * Interface for the slice
+ * @date 5/3/2023 - 0:17:38
+ *
+ * @interface HouseState
+ * @typedef {HouseState}
+ */
 interface HouseState {
+	/**
+	 * Door Types in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IDoorType[]}
+	 */
 	doorTypes: IDoorType[];
+	/**
+	 * Faucet Types in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IFaucetType[]}
+	 */
 	faucetTypes: IFaucetType[];
+	/**
+	 * Floor Types in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IFloorType[]}
+	 */
 	floorTypes: IFloorType[];
+	/**
+	 * Houses in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IHouse[]}
+	 */
 	houses: IHouse[];
+	/**
+	 * Whether the state is loading or not
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {boolean}
+	 */
 	isLoading: boolean;
+	/**
+	 * Messae got from HTTP request
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {string}
+	 */
 	requestMessage: string;
+	/**
+	 * Selected Door Type in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IDoorType}
+	 */
 	selectedDoorType?: IDoorType;
+	/**
+	 * Selected Faucet Type in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IFaucetType}
+	 */
 	selectedFaucetType?: IFaucetType;
+	/**
+	 * Selected Floor Type in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IFloorType}
+	 */
 	selectedFloorType?: IFloorType;
+	/**
+	 * Selected House in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IHouse}
+	 */
 	selectedHouse?: IHouse;
 }
 
 // Global Consts
+/**
+ * Initial values for the state
+ * @date 5/3/2023 - 0:18:00
+ *
+ * @type {HouseState}
+ */
 const initialState: HouseState = {
 	houses: [],
 	selectedHouse: undefined,
@@ -37,6 +110,12 @@ const initialState: HouseState = {
 	requestMessage: ""
 };
 
+/**
+ * Create the slice for the Houses
+ * @date 5/3/2023 - 0:18:42
+ *
+ * @type {*}
+ */
 export const house = createSlice({
 	name: "house",
 	initialState,

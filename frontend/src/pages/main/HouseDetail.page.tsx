@@ -9,7 +9,7 @@ import { PrimeDivider, PrimeProgressSpinner } from "../../imports/prime-react";
 import { FeaturesLayoutComponent, HeroImageComponent, HouseFinishesComponent, PageTitleComponent, TitleComponent } from "../../components/shared";
 
 // Own Components
-import { GalleriaComponent, HouseDetailFooterComponent } from "../../components/house_details";
+import { GalleryComponent, HouseDetailFooterComponent } from "../../components/house_details";
 
 // Store
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -18,6 +18,13 @@ import { getDoorTypes, getFaucetTypes, getFloorTypes, getHouse, removeDoorTypes,
 // Interfaces
 import { IHouseFeatures, IHouseImage } from "../../interfaces";
 
+/**
+ * Component to display the Hose Detail Page
+ * @date 5/3/2023 - 0:08:38
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function HouseDetail(): JSX.Element {
 	const { selectedDoorType, selectedFaucetType, selectedFloorType, isLoading, houses, selectedHouse, requestMessage } = useAppSelector(state => state.houses);
 
@@ -71,7 +78,7 @@ export default function HouseDetail(): JSX.Element {
 			<PageTitleComponent title={selectedHouse?.name!} />
 
 			<div className="responsive-container width-transition lg:flex">
-				<GalleriaComponent imageUrls={imageUrls!} />
+				<GalleryComponent imageUrls={imageUrls!} />
 
 				<PrimeDivider className="lg:hidden" />
 

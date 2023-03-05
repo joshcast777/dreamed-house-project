@@ -16,10 +16,31 @@ import { updateProforma } from "../../store/slices/proformas";
 import { IHouseFeatures } from "../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:45:56
+ *
+ * @interface ProformaEditDialogProps
+ * @typedef {ProformaEditDialogProps}
+ */
 interface ProformaEditDialogProps {
+	/**
+	 * Function to make visible the dialog component or not
+	 * @date 4/3/2023 - 22:45:55
+	 *
+	 * @type {*}
+	 */
 	visibleFunction: any;
 }
 
+/**
+ * Component to display a dialog to edit the Proforma Data
+ * @date 4/3/2023 - 22:45:55
+ *
+ * @export
+ * @param {ProformaEditDialogProps} { visibleFunction }
+ * @returns {JSX.Element}
+ */
 export default function ProformaEditDialog({ visibleFunction }: ProformaEditDialogProps): JSX.Element {
 	const { doorTypes, faucetTypes, floorTypes, isLoading: isLoadingHouse, selectedHouse, selectedDoorType, selectedFaucetType, selectedFloorType } = useAppSelector(state => state.houses);
 	const { isLoading: isLoadingProforma, selectedProforma } = useAppSelector(state => state.proforma);

@@ -12,6 +12,13 @@ import { ProformaTableComponet } from "../../components/proforma";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { getProformas, removeProformas } from "../../store/slices/proformas";
 
+/**
+ * Component to display the Proforma Page
+ * @date 5/3/2023 - 0:09:19
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function Proforma(): JSX.Element {
 	const { token } = useAppSelector(state => state.user);
 	const { isLoading, proformas, requestMessage } = useAppSelector(state => state.proforma);

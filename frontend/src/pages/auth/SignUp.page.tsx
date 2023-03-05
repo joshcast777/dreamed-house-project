@@ -12,6 +12,13 @@ import { AuthLayoutComponent, SignUpFormComponent } from "../../components/auth"
 import { useAppDispatch, useAppSelector } from "../../store";
 import { removeRequestMessage } from "../../store/slices/users";
 
+/**
+ * Component to display the SignUp page
+ * @date 5/3/2023 - 0:07:35
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function SignUp(): JSX.Element {
 	const { requestMessage } = useAppSelector(state => state.user);
 

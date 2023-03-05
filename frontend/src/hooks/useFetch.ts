@@ -1,3 +1,12 @@
+/**
+ * Custom Hook to return data after using Fetch
+ * @date 4/3/2023 - 23:39:11
+ *
+ * @export
+ * @template T
+ * @param {() => Promise<Response>} fetchFunction
+ * @returns {Promise<string | T>}
+ */
 export default function useFetch<T>(fetchFunction: () => Promise<Response>): Promise<string | T> {
 	return fetchFunction()
 		.then((res: Response): Promise<T> => {

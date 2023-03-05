@@ -26,17 +26,49 @@ import { signIn } from "../../store/slices/users";
 import { IAuthUser } from "../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:28:14
+ *
+ * @interface FormData
+ * @typedef {FormData}
+ */
 interface FormData {
+	/**
+	 * User Email
+	 * @date 4/3/2023 - 22:28:14
+	 *
+	 * @type {string}
+	 */
 	email: string;
+	/**
+	 * User Password
+	 * @date 4/3/2023 - 22:28:14
+	 *
+	 * @type {string}
+	 */
 	password: string;
 }
 
 // Global Consts
+/**
+ * Default values for the form
+ * @date 4/3/2023 - 22:28:14
+ *
+ * @type {FormData}
+ */
 const defaultValues: FormData = {
 	email: "",
 	password: ""
 };
 
+/**
+ * Component to display a SignIn Form
+ * @date 4/3/2023 - 22:28:14
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function SignInForm(): JSX.Element {
 	const { isLoading, requestMessage } = useAppSelector(state => state.user);
 

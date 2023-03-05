@@ -10,6 +10,13 @@ import { useAppDispatch } from "../../store";
 import { removeRequestMessage as removeHouseErrors } from "../../store/slices/houses";
 import { removeRequestMessage as removeUserErrors } from "../../store/slices/users";
 
+/**
+ * Component to display the Not-Found <Page></Page>
+ * @date 5/3/2023 - 0:08:53
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function NotFound(): JSX.Element {
 	const dispatch = useAppDispatch();
 

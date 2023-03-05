@@ -5,11 +5,38 @@ import { useNavigate } from "react-router-dom";
 import { PrimeButton } from "../../imports/prime-react";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:24:53
+ *
+ * @interface FormButtonsProps
+ * @typedef {FormButtonsProps}
+ */
 interface FormButtonsProps {
+	/**
+	 * Label for the Cancel button
+	 * @date 4/3/2023 - 22:24:53
+	 *
+	 * @type {string}
+	 */
 	cancelButton: string;
+	/**
+	 * Label for the Submit button
+	 * @date 4/3/2023 - 22:24:53
+	 *
+	 * @type {string}
+	 */
 	submitButton: string;
 }
 
+/**
+ * Component to display the footer buttons for the Auth Form
+ * @date 4/3/2023 - 22:24:53
+ *
+ * @export
+ * @param {FormButtonsProps} { cancelButton, submitButton }
+ * @returns {JSX.Element}
+ */
 export default function FormButtons({ cancelButton, submitButton }: FormButtonsProps): JSX.Element {
 	const navigate = useNavigate();
 

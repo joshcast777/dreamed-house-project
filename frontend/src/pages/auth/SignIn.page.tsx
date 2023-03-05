@@ -11,6 +11,13 @@ import { AuthLayoutComponent, SignInFormComponent } from "../../components/auth"
 import { useAppDispatch, useAppSelector } from "../../store";
 import { removeRequestMessage } from "../../store/slices/users";
 
+/**
+ * Component to display the SignIn Page
+ * @date 5/3/2023 - 0:07:16
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function SignIn(): JSX.Element {
 	const { requestMessage } = useAppSelector(state => state.user);
 

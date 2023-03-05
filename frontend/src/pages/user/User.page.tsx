@@ -16,17 +16,68 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { deleteUser, getUser, removeRequestMessage } from "../../store/slices/users";
 
 // Own Interfaces
+/**
+ * Interface to use into functional component
+ * @date 5/3/2023 - 0:09:44
+ *
+ * @interface UserData
+ * @typedef {UserData}
+ */
 interface UserData {
+	/**
+	 * User Data
+	 * @date 5/3/2023 - 0:09:44
+	 *
+	 * @type {string}
+	 */
 	text: string;
+	/**
+	 * Title for the User data
+	 * @date 5/3/2023 - 0:09:44
+	 *
+	 * @type {string}
+	 */
 	title: string;
 }
 
+/**
+ * Interface to use into functional component
+ * @date 5/3/2023 - 0:09:44
+ *
+ * @interface OptionData
+ * @typedef {OptionData}
+ */
 interface OptionData {
+	/**
+	 * Button to be displayed in every User Option
+	 * @date 5/3/2023 - 0:09:44
+	 *
+	 * @type {JSX.Element}
+	 */
 	button: JSX.Element;
+	/**
+	 * CSS classes for the component
+	 * @date 5/3/2023 - 0:09:44
+	 *
+	 * @type {string}
+	 */
 	className: string;
+	/**
+	 * Title for eery User option
+	 * @date 5/3/2023 - 0:09:44
+	 *
+	 * @type {JSX.Element}
+	 */
 	title: JSX.Element;
 }
 
+/**
+ * Component to display the User Page
+ * @date 5/3/2023 - 0:09:44
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function User(): JSX.Element {
 	const { requestMessage, token, userAuthenticated } = useAppSelector(state => state.user);
 

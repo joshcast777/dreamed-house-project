@@ -8,14 +8,51 @@ import { changePassword, deleteUser, getUser, signIn, signUp, updateUser } from 
 import { ISignInResponse, IUser } from "../../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface dfor the slice
+ * @date 5/3/2023 - 0:34:22
+ *
+ * @interface UserState
+ * @typedef {UserState}
+ */
 interface UserState {
+	/**
+	 * Whether the state is loading or not
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {boolean}
+	 */
 	isLoading: boolean;
+	/**
+	 * Messae got from HTTP request
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {string}
+	 */
 	requestMessage: string;
+	/**
+	 * Token for the authenticated User
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IHouse}
+	 */
 	token: string;
+	/**
+	 * User Authenticated
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IHouse}
+	 */
 	userAuthenticated?: IUser;
 }
 
 // Global Consts
+/**
+ * Initial values for the state
+ * @date 5/3/2023 - 0:18:00
+ *
+ * @type {UserState}
+ */
 const initialState: UserState = {
 	isLoading: false,
 	requestMessage: "",
@@ -23,6 +60,12 @@ const initialState: UserState = {
 	userAuthenticated: undefined
 };
 
+/**
+ * Create the slice for the Users
+ * @date 5/3/2023 - 0:36:16
+ *
+ * @type {*}
+ */
 export const user = createSlice({
 	name: "user",
 	initialState,

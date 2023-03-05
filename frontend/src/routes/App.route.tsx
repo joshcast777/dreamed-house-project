@@ -8,6 +8,13 @@ import { useAppSelector } from "../store";
 // Routes
 import { AuthRoutes, HouseRoutes, PrivateRoutes, PublicRoutes, UserRoutes } from "./components";
 
+/**
+ * App Routes
+ * @date 5/3/2023 - 0:12:47
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function AppRoutes(): JSX.Element {
 	const { userAuthenticated } = useAppSelector(state => state.user);
 

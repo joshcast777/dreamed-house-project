@@ -20,21 +20,67 @@ import { changePassword } from "../../store/slices/users";
 import { IChangePassword } from "../../interfaces/";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 23:24:40
+ *
+ * @interface ChangePasswordFormProps
+ * @typedef {ChangePasswordFormProps}
+ */
 interface ChangePasswordFormProps {
+	/**
+	 * Function to make visible the dialog component or not
+	 * @date 4/3/2023 - 23:24:40
+	 *
+	 * @type {Dispatch<SetStateAction<boolean>>}
+	 */
 	visibleFunction: Dispatch<SetStateAction<boolean>>;
 }
 
+/**
+ * Interface to use into functional component
+ * @date 4/3/2023 - 23:24:40
+ *
+ * @interface FormData
+ * @typedef {FormData}
+ */
 interface FormData {
+	/**
+	 * Current User Password
+	 * @date 4/3/2023 - 23:24:40
+	 *
+	 * @type {string}
+	 */
 	password: string;
+	/**
+	 * New User Password
+	 * @date 4/3/2023 - 23:24:40
+	 *
+	 * @type {string}
+	 */
 	newPassword: string;
 }
 
 // Global Consts
+/**
+ * Default values for the form
+ * @date 4/3/2023 - 23:24:40
+ *
+ * @type {FormData}
+ */
 const defaultValues: FormData = {
 	password: "",
 	newPassword: ""
 };
 
+/**
+ * Component to display a form to change the User Password
+ * @date 4/3/2023 - 23:24:40
+ *
+ * @export
+ * @param {ChangePasswordFormProps} { visibleFunction }
+ * @returns {JSX.Element}
+ */
 export default function ChangePasswordForm({ visibleFunction }: ChangePasswordFormProps): JSX.Element {
 	const { isLoading, token, userAuthenticated } = useAppSelector(state => state.user);
 

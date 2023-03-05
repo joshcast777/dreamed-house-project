@@ -3,14 +3,51 @@ import { createProforma, deleteProforma, getProformas, updateProforma } from "."
 import { IProforma } from "../../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the slice
+ * @date 5/3/2023 - 0:21:50
+ *
+ * @interface ProformaState
+ * @typedef {ProformaState}
+ */
 interface ProformaState {
+	/**
+	 * Whether the state is loading or not
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {boolean}
+	 */
 	isLoading: boolean;
+	/**
+	 * Proformas in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IProforma[]}
+	 */
 	proformas: IProforma[];
+	/**
+	 * Messae got from HTTP request
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {string}
+	 */
 	requestMessage: string;
+	/**
+	 * Selected Proforma in State
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {IHouse}
+	 */
 	selectedProforma?: IProforma;
 }
 
 // Global Consts
+/**
+ * Initial values for the state
+ * @date 5/3/2023 - 0:18:00
+ *
+ * @type {HouseState}
+ */
 const initialState: ProformaState = {
 	isLoading: false,
 	requestMessage: "",
@@ -18,6 +55,12 @@ const initialState: ProformaState = {
 	selectedProforma: undefined
 };
 
+/**
+ * Create the slice for the Proformas
+ * @date 5/3/2023 - 0:18:42
+ *
+ * @type {*}
+ */
 export const proforma = createSlice({
 	name: "proforma",
 	initialState,

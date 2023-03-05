@@ -17,6 +17,13 @@ import { getHouses } from "../../store/slices/houses";
 // Interfaces
 import { IHouse } from "../../interfaces";
 
+/**
+ * Component to display the House (main) Page
+ * @date 5/3/2023 - 0:08:02
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function Home(): JSX.Element {
 	const { houses, isLoading } = useAppSelector(state => state.houses);
 

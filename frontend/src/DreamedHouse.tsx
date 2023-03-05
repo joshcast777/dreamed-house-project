@@ -18,6 +18,13 @@ import AppRoutes from "./routes/App.route";
 // Store
 import { store } from "./store";
 
+/**
+ * Component to display all web site
+ * @date 5/3/2023 - 0:43:58
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function DreamedHouse(): JSX.Element {
 	return (
 		<Provider store={store}>

@@ -16,11 +16,37 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { signOut } from "../../store/slices/users";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 23:21:21
+ *
+ * @interface ItemTemplateProps
+ * @typedef {ItemTemplateProps}
+ */
 interface ItemTemplateProps {
+	/**
+	 * Label for every nav link
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {string}
+	 */
 	label: string;
+	/**
+	 * Path link for every nav link
+	 * @date 4/3/2023 - 23:21:21
+	 *
+	 * @type {string}
+	 */
 	link: string;
 }
 
+/**
+ * Component to display a top Menubar
+ * @date 4/3/2023 - 23:21:21
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function MenuBar(): JSX.Element {
 	const { userAuthenticated } = useAppSelector(state => state.user);
 

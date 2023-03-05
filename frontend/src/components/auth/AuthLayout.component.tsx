@@ -5,10 +5,31 @@ import { LogoLinkComponent } from "../shared";
 import { backgroundImageStyleHelper } from "../../helpers";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:20:22
+ *
+ * @interface AuthLayoutProps
+ * @typedef {AuthLayoutProps}
+ */
 interface AuthLayoutProps {
+	/**
+	 * Child param for the functional component
+	 * @date 4/3/2023 - 22:20:22
+	 *
+	 * @type {JSX.Element}
+	 */
 	children: JSX.Element;
 }
 
+/**
+ * Component to structure the auth components in page
+ * @date 4/3/2023 - 22:20:22
+ *
+ * @export
+ * @param {AuthLayoutProps} { children }
+ * @returns {JSX.Element}
+ */
 export default function AuthLayout({ children }: AuthLayoutProps): JSX.Element {
 	return (
 		<div className="bg-fixed min-h-screen" style={backgroundImageStyleHelper("header-page-image_vrhxoi")}>

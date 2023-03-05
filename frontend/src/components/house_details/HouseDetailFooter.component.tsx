@@ -10,6 +10,13 @@ import { PrimeButton, PrimeDialog, PrimeMessage, PrimeToast } from "../../import
 import { useAppDispatch, useAppSelector } from "../../store";
 import { removeRequestMessage } from "../../store/slices/proformas";
 
+/**
+ * CComponent to display footer buttons for the House Detail
+ * @date 4/3/2023 - 22:33:51
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function HouseDetailFooter(): JSX.Element {
 	const { userAuthenticated } = useAppSelector(state => state.user);
 	const { requestMessage } = useAppSelector(state => state.proforma);

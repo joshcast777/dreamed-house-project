@@ -4,6 +4,13 @@ import { PrimeDivider } from "../../imports/prime-react";
 // Shared Components
 import { LogoLinkComponent, SocialLinksComponent } from ".";
 
+/**
+ * Component to display the Footer page
+ * @date 4/3/2023 - 22:59:58
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function Footer(): JSX.Element {
 	return (
 		<div className="bg-dark-color w-full py-7">

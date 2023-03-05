@@ -7,6 +7,13 @@ import { PageLayoutComponent } from "../../components/shared";
 // Pages
 import { HomePage, HouseDetailPage } from "../../pages/main";
 
+/**
+ * Component to set the House Routes
+ * @date 5/3/2023 - 0:15:49
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function House(): JSX.Element {
 	return (
 		<PageLayoutComponent>

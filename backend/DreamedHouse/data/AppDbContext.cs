@@ -3,24 +3,42 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DreamedHouse.Data;
 
+/// <summary>
+/// Class <c>AppDbContext</c> models the database context
+/// </summary>
 public partial class AppDbContext : DbContext
 {
+	/// <value>Property <c>DoorTypes</c> represents the DoorTypes Entity in dtabase context</value>
 	public virtual DbSet<DoorType> DoorTypes { get; set; } = null!;
 
+	/// <value>Property <c>FaucetTypes</c> represents the FaucetTypes Entity in dtabase context</value>
 	public virtual DbSet<FaucetType> FaucetTypes { get; set; } = null!;
 
+	/// <value>Property <c>FloorTypes</c> represents the FloorTypes Entity in dtabase context</value>
 	public virtual DbSet<FloorType> FloorTypes { get; set; } = null!;
 
+	/// <value>Property <c>Houses</c> represents the Houses Entity in dtabase context</value>
 	public virtual DbSet<House> Houses { get; set; } = null!;
 
+	/// <value>Property <c>HouseImages</c> represents the HouseImages Entity in dtabase context</value>
 	public virtual DbSet<HouseImage> HouseImages { get; set; } = null!;
 
+	/// <value>Property <c>Proformas</c> represents the Proformas Entity in dtabase context</value>
 	public virtual DbSet<Proforma> Proformas { get; set; } = null!;
 
+	/// <value>Property <c>Users</c> represents the Users Entity in dtabase context</value>
 	public virtual DbSet<User> Users { get; set; } = null!;
 
+	/// <summary>
+	/// Constructor to initialize the AppDbContext class
+	/// </summary>
+	/// <param name="options">The options to be used by a DbContext.</param>
 	public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+	/// <summary>
+	/// Build the models according to the database
+	/// </summary>
+	/// <param name="modelBuilder">Builder which define the shape and relationships of the entities according to the database</param>
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder

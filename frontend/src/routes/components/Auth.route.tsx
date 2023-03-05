@@ -12,6 +12,13 @@ import { SignInPage, SignUpPage } from "../../pages/auth";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { removeRequestMessage } from "../../store/slices/users";
 
+/**
+ * Component to set the Auth Routes
+ * @date 5/3/2023 - 0:15:36
+ *
+ * @export
+ * @returns {JSX.Element}
+ */
 export default function Auth(): JSX.Element {
 	const { requestMessage } = useAppSelector(state => state.user);
 

@@ -17,10 +17,31 @@ import { cloudinaryUrlHelper } from "../../helpers";
 import { IHouse, IHouseFeatures } from "../../interfaces";
 
 // Own Interfaces
+/**
+ * Interface for the functional component params
+ * @date 4/3/2023 - 22:30:44
+ *
+ * @interface CardHouseProps
+ * @typedef {CardHouseProps}
+ */
 interface CardHouseProps {
+	/**
+	 * House data to diplay in card
+	 * @date 4/3/2023 - 22:30:44
+	 *
+	 * @type {IHouse}
+	 */
 	house: IHouse;
 }
 
+/**
+ * Component to structure Cards to display House data
+ * @date 4/3/2023 - 22:30:44
+ *
+ * @export
+ * @param {CardHouseProps} { house }
+ * @returns {JSX.Element}
+ */
 export default function CardHouse({ house }: CardHouseProps): JSX.Element {
 	const houseFeatures: IHouseFeatures = {
 		bathroomsNumber: house.bathroomsNumber,
