@@ -1,44 +1,58 @@
-# Casa Soñada
+![Casa Soñada Logo](https://res.cloudinary.com/dnxfbzfoz/image/upload/v1675233141/dreamed-house/logo_yx6nb0.svg)
 
-## Descripción
+# Acerca del proyecto Casa Soñada
 
-Un proyecto para la materia Veridicación y Validación de Software
+Aplicación web en proceso de desarrollo creado por estudiantes de la Universidad de Guayaquil, en la cátedra de Verificación y Validación de Software con el ING. Ángel Cuenca.
 
 ---
+
+## Integrantes
+
+- Castillo Riofrío Miguel Castillo
+- Navarro Garzón Bruce Fabricio
+- Ramos Ochoa Iván Harijan
+
+---
+
+## Funcionalidad
 
 Este proyecto es para que los usuarios creen proformas de casas. Los usuarios deberán iniciar sesión, después de registrarse, para poder guardar y ver sus proformas.
 
 ---
 
-## Herramientas usadas en el proyecto
-
-### Editores de código e IDEs
+## Tecnologías usadas
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-
-### Frontend
-
-- [Animate.css](https://animate.style/)
 - [JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)/[TSX](https://www.typescriptlang.org/docs/handbook/react.html)
+- [Node.js](https://nodejs.org/en/)
 - [PNPM](https://pnpm.io/)
-- [PrimeReact](https://primereact.org/) de [PrimeFaces](https://www.primefaces.org/)
 - [React](https://reactjs.org/)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [Sass](https://sass-lang.com/)
 - [TailwindCSS](https://tailwindcss.com/)
-- [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
-
-### Backend
-
-- [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)
-- [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
+- [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)[C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
 - [Cloudinary](https://cloudinary.com/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [JWT](https://jwt.io/)
-
-### Database
-
 - [Clever Cloud](https://www.clever-cloud.com/)
-- [MySQL](https://www.mysql.com/)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
+
+## Cómo instalar y ejecutar el proyecto
+
+### Clonar el proyecto
+
+```git
+git clone https://github.com/joshcast777/dreamed-house-project.git
+```
+
+Para los pasos de instalación y ejecución dirigirse a las carperas **database**, **backend** y **frontend** y seguir los pasos de los READMEs ubicados en la raíz de cada una de esas carpetas.
+
+## Nota
+
+Si al ejecutar los comandos en la terminal de [Visual Studio Code](https://code.visualstudio.com/) o de [Visual Studio Code](https://code.visualstudio.com/) aparece el error de **Ejecución de scripts deshabilitada**, abrir la PowerShell como administrador y ejecutar lo siguiente:
+
+```shell
+Set-ExecutionPolicy Unrestricted
+```
+
+Y presionar [S] Sí.
