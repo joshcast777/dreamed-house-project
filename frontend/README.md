@@ -6,7 +6,7 @@ Esta es la parte frontend del proyecto Casa Soñada.
 
 ---
 
-## Herramientas
+## Herramientas usadas en el proyecto
 
 - [Animate.css](https://animate.style/): Aplicar ciertas animaciones a ciertos elementos HTML.
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html): Estilos CSS del build final.
@@ -25,23 +25,24 @@ Esta es la parte frontend del proyecto Casa Soñada.
 
 ---
 
+## Cómo instalar el proyecto
+
+1. Instalar **Visual Studio Code**.
+2. Instalar **Node.js**.
+3. Activar **PNPM** usando **Corepack**. Para esto, abrir la CMD, terminal o PowerShell y ejecutar `corepack enable`.
+4. Para saber que se instaló ejecutar `pnpm -v` y se mostrará la versión instalada.
+5. Abrir la CMD, terminal o PowerShell desde la raíz del proyecto frontend y ejecutar `pnpm i` para instalar los paquetes de Node.
+
+---
+
 ## Cómo ejecutar el proyecto
 
-1. Instalar [Node.js](https://nodejs.org/en/)
-2. Activar [PNPM](https://pnpm.io/) usando Corepack
-3. Ejecutar `pnpm i` para instalar los paquetes de Node.
-4. Ejecutar `pnpm run dev` para correr el proyecto.
+1. Abrir la CMD, terminal o PowerShell desde la raíz del proyecto frontend y ejecutar `pnpm run dev` para ejecutar la aplicación.
+2. En caso de no abrirse el navegaor, copiar el link y pegarlo en la barra de direcciones del navegador, o darle `Crtl`+ `clic` en caso de ser posible.
 
 ---
 
 ## Notas
 
-### Nota 1
-
-La parte backend de este proyecto se la ejecutó tanto en Visual Studio Code como en Visual Studio 2022, al utilizar dos herramientas de desarrollo diferentes la ruta de acceso a la API del backend podría cambiar. O al ejecutarse en una computadora diferente también podría cambiar.
-
-Para esto, se deberá cambiar el valor de la variable `VITE_BASE_URL` ubicada en el archivo `.env` situado en la raíz del proyecto frontend.
-
-### Nota 2
-
-Las imágenes no está alojadas localmente, en este caso, se usó una hosting para imágenes llamado Cloudinary.
+- La parte backend de este proyecto se la ejecutó tanto en Visual Studio Code como en Visual Studio 2022 y en diferentes computadoras, esto podría cambiar la ruta de acceso a la API del backend. En caso de que el frontend no se conecte con el backend debido a esto, se deberá cambiar el valor de la variable `VITE_BASE_URL` ubicada en el archivo `.env` situado en la raíz del proyecto frontend por el valor correspondiente.
+- Las imágenes no está alojadas localmente, en este caso se usó Cloudinary.

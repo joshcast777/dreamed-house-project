@@ -4,8 +4,9 @@
 
 Esta es la parte backend del proyecto Casa Soñada.
 
-## Herramientas
+## Herramientas usadas en el proyecto
 
+- [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download): Herramienta para trabajar con .NET Framework.
 - [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0): Framework para crear aplicaciones conectadas a internet.
 - [C#](https://learn.microsoft.com/en-us/dotnet/csharp/): Lenguaje de programación moderno, basado en objetos y con seguridad de tipos.
 - [Cloudinary](https://cloudinary.com/): Tecnología SaaS para la gestión de imágenes y vídeos basados en la nube.
@@ -16,22 +17,39 @@ Esta es la parte backend del proyecto Casa Soñada.
 
 ---
 
-## Notas
+## Cómo instalar el proyecto
 
-### Nota 1
+### Con Visual Studio 2022
 
-Si abre el proyecto backend en Visual Studio Code, necesitará instalar la extensión oficial para [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
+1. Instalar **Visual Studio 2022**.
+2. Instalar **ASP.NET and web development** desde el **Visual Studio Installer**.
+3. Abrir el archivo `.sln` ubicado en la raíz del proyecto backend.
 
-Deberá esperar la notificación de si desea agregar los assets y presionar en Sí (Yes).
+### Con Visual Studio Code
 
-Y presionar `Ctrl` + `F5` para ejecutar el proyecto.
+1. Instalar **.NET 7.0 SDK**.
+2. Instalar **Visual Studio Code**.
+3. Instalar la extensión **C#** desde el apartado de **Extensiones**.
+4. Esperar la notificación en Visual Studio Code indicando si se desea agregar los assets y presionar en Yes (Sí).
 
-### Nota 2
+---
 
-Si se ejecuta el proyecto backend desde Visual Studio Code, se abrirá en el navegador pero no cargará la página.
+## Cómo ejecutar el proyecto
 
-Al link en el navegador deberá agregarle al final `/swagger` y `Enter` para que cargue.
+### Con Visual Studio 2022
 
-### Nota 3
+1. Abrir el proyecto desde **Visual Studio 2022**.
+2. Presionar `F5` para que se ejecute (o `Ctrl` + `F5` para ejecutarlo sin el debugger).
+3. Abrirá el navegador predeterminado con la ejecuión del proyecto.
 
-Si se usa una base de datos de forma local, se deberá cambiar los datos del `DefaultConnection` en el `ConnectionString`.
+### Con Visual Studio Code
+
+1. Abrir el proyecto con **Visual Studio Code**.
+2. Presionar `Ctrl` + `F5` para la ejecución del proyecto.
+3. Se abrirá el navegador con una página que no carga, para arreglar esto, ir a la barra de direcciones del navegador y al final del link agregar `/swagger` para que pueda cargar el proyecto.
+
+---
+
+### Nota
+
+Si se usa una base de datos de forma local, se deberán cambiar los datos del `DefaultConnection` en el `ConnectionString` en el archivo `appsettings.json` situado en la raíz del proyecto backend.

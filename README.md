@@ -10,7 +10,7 @@ Este proyecto es para que los usuarios creen proformas de casas. Los usuarios de
 
 ---
 
-## Herramientas
+## Herramientas usadas en el proyecto
 
 ### Editores de código e IDEs
 
@@ -20,8 +20,7 @@ Este proyecto es para que los usuarios creen proformas de casas. Los usuarios de
 ### Frontend
 
 - [Animate.css](https://animate.style/)
-- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
-- [HTML](https://www.w3schools.com/html/)
+- [JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)/[TSX](https://www.typescriptlang.org/docs/handbook/react.html)
 - [PNPM](https://pnpm.io/)
 - [PrimeReact](https://primereact.org/) de [PrimeFaces](https://www.primefaces.org/)
 - [React](https://reactjs.org/)
