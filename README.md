@@ -45,7 +45,11 @@ Este proyecto es para que los usuarios creen proformas de casas. Los usuarios de
 git clone https://github.com/joshcast777/dreamed-house-project.git
 ```
 
-Para los pasos de instalación y ejecución dirigirse a las carperas **database**, **backend** y **frontend** y seguir los pasos de los READMEs ubicados en la raíz de cada una de esas carpetas.
+Para los pasos de instalación y ejecución revisar los siguientes siguientes archivos en el siguiente orden:
+
+1. [./database/README](https://github.com/joshcast777/dreamed-house-project/blob/main/backend/README.md)
+2. [./backend/README](https://github.com/joshcast777/dreamed-house-project/blob/main/backend/README.md)
+3. [./frontend/README](https://github.com/joshcast777/dreamed-house-project/blob/main/frontend/README.md)
 
 ## Nota
 

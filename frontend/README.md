@@ -30,7 +30,7 @@ Esta es la parte frontend del proyecto Casa Soñada.
 
 1. Instalar [Visual Studio Code](https://code.visualstudio.com/).
 2. Instalar [Node.js](https://nodejs.org/en/).
-3. Activar [PNPM](https://pnpm.io/) usando [Corepack](https://pnpm.io/installation#using-corepack). Para esto, abrir la CMD, terminal o PowerShell y ejecutar
+3. Activar [PNPM](https://pnpm.io/) usando [Corepack](https://pnpm.io/installation#using-corepack). Para esto, abrir la CMD, terminal o PowerShell como administrador o super usuario y ejecutar
 
 ```shell
 corepack enable
