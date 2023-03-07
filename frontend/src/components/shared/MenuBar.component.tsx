@@ -99,7 +99,7 @@ export default function MenuBar(): JSX.Element {
 	);
 
 	return (
-		<div className="sticky top-0 left-0 right-0 z-10 bg-dark-color/80 backdrop-blur-sm">
+		<div className="bg-dark-color/80 backdrop-blur-sm">
 			<PrimeMenubar model={items} start={start} end={end} className="bg-transparent border-none rounded-none responsive-container width-transition" />
 		</div>
 	);

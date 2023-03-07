@@ -35,6 +35,9 @@ namespace DreamedHouse.Controllers
 			if (_context.Proformas == null)
 				return Problem("La Entidad 'Proformas' no existe");
 
+			proforma.CreatedAt = DateTime.Now;
+			proforma.UpdatedAt = DateTime.Now;
+
 			_context.Proformas.Add(proforma);
 			await _context.SaveChangesAsync();
 

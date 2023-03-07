@@ -18,8 +18,9 @@ import { removeRequestMessage } from "../../store/slices/proformas";
  * @returns {JSX.Element}
  */
 export default function HouseDetailFooter(): JSX.Element {
-	const { userAuthenticated } = useAppSelector(state => state.user);
+	const { selectedDoorType, selectedFaucetType, selectedFloorType } = useAppSelector(state => state.houses)
 	const { requestMessage } = useAppSelector(state => state.proforma);
+	const { userAuthenticated } = useAppSelector(state => state.user);
 
 	const dispatch = useAppDispatch();
 
@@ -57,7 +58,7 @@ export default function HouseDetailFooter(): JSX.Element {
 						</Link>
 					</>
 				) : (
-					<PrimeButton label="Generar proforma" className="p-button-help button background-color-transition w-full basis-full 2xs:order-5 2xs:flex-1" onClick={(): void => setVisible(true)} />
+					<PrimeButton label="Generar proforma" className="p-button-help button background-color-transition w-full basis-full 2xs:order-5 2xs:flex-1" onClick={(): void => setVisible(true)} disabled={!selectedDoorType || !selectedFaucetType || !selectedFloorType} />
 				)}
 
 				<Link to="/" className="basis-full 2xs:flex-1">

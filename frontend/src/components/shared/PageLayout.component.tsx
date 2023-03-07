@@ -31,7 +31,7 @@ export default function PageLayout({ children }: PageLayoutProps): JSX.Element {
 	return (
 		<div className="flex flex-col justify-between items-stretch min-h-screen">
 			<div>
-				<div className="w-full bg-white-color">
+				<div className="sticky top-0 left-0 right-0 z-10 w-full bg-white-color">
 					<MenuBarComponent />
 				</div>
 
