@@ -47,7 +47,7 @@ git clone https://github.com/joshcast777/dreamed-house-project.git
 
 Para los pasos de instalación y ejecución revisar los siguientes siguientes archivos en el siguiente orden:
 
-1. [./database/README](https://github.com/joshcast777/dreamed-house-project/blob/main/backend/README.md)
+1. [./database/README](https://github.com/joshcast777/dreamed-house-project/blob/main/database/README.md)
 2. [./backend/README](https://github.com/joshcast777/dreamed-house-project/blob/main/backend/README.md)
 3. [./frontend/README](https://github.com/joshcast777/dreamed-house-project/blob/main/frontend/README.md)
 
