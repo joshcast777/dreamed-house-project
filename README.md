@@ -1,4 +1,4 @@
-![Casa Soñada Logo](https://res.cloudinary.com/dnxfbzfoz/image/upload/v1675233141/dreamed-house/logo_yx6nb0.svg)
+![Casa Soñada Logo](https://res.cloudinary.com/dnxfbzfoz/image/upload/v1705441465/sr80kwrayzimxr0kswvs.png)
 
 # Acerca del proyecto Casa Soñada
 
@@ -10,7 +10,6 @@ Aplicación web en proceso de desarrollo creado por estudiantes de la Universida
 
 - Castillo Riofrío Miguel Castillo
 - Navarro Garzón Bruce Fabricio
-- Ramos Ochoa Iván Harijan
 
 ---
 

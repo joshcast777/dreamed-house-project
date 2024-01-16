@@ -44,8 +44,6 @@ export default function AppRoutes(): JSX.Element {
 					}
 				/>
 
-				<Route path="/not-found" element={<NotFoundPage />} />
-
 				<Route path="*" element={<Navigate to="/not-found" />} />
 			</Routes>
 		</BrowserRouter>

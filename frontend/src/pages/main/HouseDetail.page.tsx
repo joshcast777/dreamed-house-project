@@ -73,7 +73,7 @@ export default function HouseDetail(): JSX.Element {
 
 	return (
 		<>
-			<HeroImageComponent text="Detalles de la casa" imageSrc="header-page-image_vrhxoi" />
+			<HeroImageComponent text="Detalles de la casa" imageSrc="dozsbie6biqzube2ykjs" />
 
 			<PageTitleComponent title={selectedHouse?.name!} />
 

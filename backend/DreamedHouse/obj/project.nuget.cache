@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "74MlC748nxivNftLvraj2PRkF61iA/7ZLqUGMaH6lcwQ8NCLqZ3BSvJS1C8zhLNu0oeHohqEriEcc/R5GAGN1g==",
+  "dgSpecHash": "GFtonliU3Pdu5JGmPfgfvZhgIhpUNjaB+/MKj3VlPT1HgIQPujoSLRPihtPjXmMKOpB5PTFBXgKUOFdCqL/sMA==",
   "success": true,
-  "projectFilePath": "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\DreamedHouse.csproj",
+  "projectFilePath": "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\DreamedHouse.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\joshc\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\joshc\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

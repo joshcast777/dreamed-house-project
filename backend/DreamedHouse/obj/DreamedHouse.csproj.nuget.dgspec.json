@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\DreamedHouse.csproj": {}
+    "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\DreamedHouse.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\DreamedHouse.csproj": {
+    "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\DreamedHouse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\DreamedHouse.csproj",
+        "projectUniqueName": "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\DreamedHouse.csproj",
         "projectName": "DreamedHouse",
-        "projectPath": "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\DreamedHouse.csproj",
+        "projectPath": "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\DreamedHouse.csproj",
         "packagesPath": "C:\\Users\\joshc\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\projects\\casa-soñada\\backend\\DreamedHouse\\obj\\",
+        "outputPath": "D:\\Documents\\Universidad\\10mo Semestre\\Gestión de Proyectos de Software\\Proyecto CasaSoñada\\dreamed-house-project\\backend\\DreamedHouse\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joshc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
 
 	return (
 		<>
-			<HeroImageComponent text="Inicio" imageSrc="header-page-image_vrhxoi" />
+			<HeroImageComponent text="Inicio" imageSrc="dozsbie6biqzube2ykjs" />
 
 			<PageTitleComponent title="Lista de casas" />
 

@@ -172,7 +172,7 @@ export default function User(): JSX.Element {
 
 			<PrimeConfirmDialog />
 
-			<HeroImageComponent text={`${userAuthenticated?.firstName} ${userAuthenticated?.lastName}`} imageSrc="user/user-background_trpz3q" />
+			<HeroImageComponent text={`${userAuthenticated?.firstName} ${userAuthenticated?.lastName}`} imageSrc="dozsbie6biqzube2ykjs" />
 
 			<h1 className="font-bold text-4xl text-center mb-10">Datos personales</h1>
 

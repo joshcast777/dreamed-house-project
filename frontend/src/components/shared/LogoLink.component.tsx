@@ -40,7 +40,7 @@ interface LogoLinkProps {
 export default function LogoLink({ className, imgClassName }: LogoLinkProps): JSX.Element {
 	return (
 		<Link to="/" className={`flex justify-center items-center ${className}`}>
-			<img src={cloudinaryUrlHelper("logo_yx6nb0.png")} alt="logo" className={imgClassName} />
+			<img src={cloudinaryUrlHelper("sr80kwrayzimxr0kswvs")} alt="logo" className={imgClassName} />
 		</Link>
 	);
 }
